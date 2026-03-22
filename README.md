@@ -23,6 +23,14 @@ Aulite is a transparent HTTP proxy that sits between your application and any AI
 
 Your application changes one URL. Everything else works exactly as before.
 
+<div align="center">
+
+<img src="docs/screenshots/dashboard-overview.png" alt="Dashboard Overview" width="800" />
+
+<sub>Compliance Overview — real-time risk monitoring with violation categories and article references</sub>
+
+</div>
+
 ```python
 client = OpenAI(
     base_url="http://localhost:3000/v1",  # Aulite instead of OpenAI
@@ -50,6 +58,12 @@ docker run -d \
 ```
 
 Open `http://localhost:3000` for the dashboard.
+
+<div align="center">
+
+<img src="docs/screenshots/terminal.png" alt="Terminal" width="700" />
+
+</div>
 
 ## Features
 
