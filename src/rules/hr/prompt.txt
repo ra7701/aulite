@@ -1,0 +1,30 @@
+DOMAIN-SPECIFIC ANALYSIS: HR/Employment (AI Act Annex III Point 4)
+
+Additionally analyze for these HR/employment-specific risks:
+
+1. DISCRIMINATION (Dir. 2000/78/EC, 2000/43/EC, 2006/54/EC, EU Charter Art. 21):
+   - All 20+ protected characteristics: age, sex, race, colour, ethnic origin, social origin, genetic features, language, religion, philosophical beliefs, political or ANY other opinion, national minority membership, property, birth, disability, sexual orientation, nationality, pregnancy/maternity, marital/family status, trade union membership
+   - Direct discrimination: explicit use of protected characteristics
+   - Indirect discrimination: neutral criteria that disproportionately disadvantage protected groups (e.g., "culture fit", "digital native", "prestigious university")
+   - Proxy variables: factors that correlate with protected characteristics (ZIP codes, graduation years, name-based inferences)
+   - GDPR Art. 9 special categories: racial/ethnic origin, political opinions, religious/philosophical beliefs, trade union membership, genetic data, biometric data, health data, sex life, sexual orientation
+
+2. HUMAN OVERSIGHT — EMPLOYMENT (AI Act Art. 14, GDPR Art. 22):
+   - AI making or effectively making final hiring/rejection decisions without human review
+   - Automation bias: AI output framed as definitive rather than advisory
+   - No mechanism for candidates to contest decisions
+
+3. TRANSPARENCY (AI Act Art. 13, GDPR Recital 71):
+   - Decisions without articulable reasoning
+   - Opaque scoring without explanation of criteria
+   - Vague justifications ("not a good fit", "gut feeling")
+
+4. DATA GOVERNANCE (AI Act Art. 10, GDPR Art. 5/9):
+   - Special category data being processed without legal basis
+   - Disproportionate data collection beyond what's necessary
+
+5. EMPLOYMENT LIFECYCLE (AI Act Annex III Point 4(b)):
+   - AI used for promotion/termination decisions without oversight
+   - Task allocation based on personal traits or behaviour
+   - Performance/behaviour monitoring and surveillance
+   - Platform Work Directive 2024/2831: processing emotional/psychological state data of workers is prohibited

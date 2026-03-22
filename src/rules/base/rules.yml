@@ -1,0 +1,135 @@
+# Aulite Base Rules — Always loaded, cannot be disabled
+# Universal EU AI Act & GDPR rules applicable across ALL domains
+#
+# Sources: EU AI Act (2024/1689), GDPR Art. 9/22, EU Charter Art. 21
+#
+# Severity tiers:
+#   10     = PROHIBITED (AI Act Art. 5 — absolute ban)
+#   9      = CRITICAL (prohibited techniques)
+#   7-8    = HIGH (special category data, right to explanation)
+#   5-6    = MEDIUM (data governance, AI literacy)
+
+# ============================================================
+# PROHIBITED PRACTICES (Score: 9-10) — EU AI Act Article 5
+# Absolute bans. No exceptions.
+# ============================================================
+
+- pattern: "emotion\\s*recogni|facial\\s*expression\\s*analy|detect\\s*emotion|assess\\s*emotional\\s*state|tone\\s*of\\s*voice\\s*analy|stress\\s*detect|lie\\s*detect|deception\\s*detect|enthusiasm\\s*level|confidence\\s*level\\s*from\\s*video|webcam\\s*monitor|attention\\s*(?:level|score)|engagement\\s*level\\s*from"
+  score: 10
+  category: "prohibited_emotion"
+  articleRef: "AI Act Art. 5(1)(f) — Emotion recognition in workplace is PROHIBITED"
+
+- pattern: "analyze\\s*photo\\s*for|assess\\s*appearance\\s*(?:for|to)|facial\\s*analysis|determine\\s*ethnicity|age\\s*estimation\\s*from\\s*image|infer\\s*(?:race|gender|religion|orientation|political|trade\\s*union|philosophical|sex\\s*life)\\s*from|biometric\\s*categori[sz]|voice\\s*analysis\\s*for\\s*gender|facial\\s*recognition|iris\\s*scan|voice\\s*print|gait\\s*analysis|retina\\s*scan|palm\\s*print|keystroke\\s*dynamic|facial\\s*geometry"
+  score: 10
+  category: "prohibited_biometric"
+  articleRef: "AI Act Art. 5(1)(g) — Biometric categorisation by protected traits is PROHIBITED"
+
+- pattern: "social\\s*media\\s*score|social\\s*credit|reputation\\s*score\\s*based\\s*on|online\\s*behavio[u]?r\\s*score|character\\s*score\\s*from\\s*social"
+  score: 10
+  category: "prohibited_social_scoring"
+  articleRef: "AI Act Art. 5(1)(c) — Social scoring is PROHIBITED"
+
+- pattern: "\\bsubliminal\\b|\\bmanipulat(?:e|ive|ion)\\s*(?:technique|behavio[u]?r|decision)|\\bdeceptive\\s*(?:technique|pattern|design)|\\bdark\\s*pattern"
+  score: 9
+  category: "prohibited_manipulation"
+  articleRef: "AI Act Art. 5(1)(a) — Subliminal/manipulative techniques causing significant harm are PROHIBITED"
+
+- pattern: "\\bexploit\\s*(?:vulnerabilit|weakness|disadvantage)|\\btarget(?:ing)?\\s*(?:vulnerable|elderly|disabled|low[- ]income|disadvantaged)|\\bprey\\s*(?:on|upon)"
+  score: 9
+  category: "prohibited_exploitation"
+  articleRef: "AI Act Art. 5(1)(b) — Exploiting vulnerabilities due to age/disability/economic situation is PROHIBITED"
+
+- pattern: "\\bcriminal\\s*(?:risk|record|background|history|prediction|profiling)|\\bpolice\\s*record|\\barrest\\s*(?:record|history)|\\bconviction\\s*(?:history|record)|\\brecidivism\\s*(?:risk|score|predict)"
+  score: 9
+  category: "prohibited_criminal_prediction"
+  articleRef: "AI Act Art. 5(1)(d) — Criminal risk prediction based solely on profiling/personality traits is PROHIBITED"
+
+- pattern: "\\bscrap(?:e|ing)\\s*(?:face|facial|photo|image)|\\bcrawl(?:ing)?\\s*(?:face|facial|photo)|\\bharvest(?:ing)?\\s*(?:face|facial|photo|image)|\\buntargeted\\s*(?:facial|biometric)\\s*(?:collection|scraping)"
+  score: 10
+  category: "prohibited_facial_scraping"
+  articleRef: "AI Act Art. 5(1)(e) — Untargeted scraping of facial images is PROHIBITED"
+
+# ============================================================
+# GDPR Art. 9 — Special category data
+# Protected across all domains
+# ============================================================
+
+- pattern: "\\bgenetic\\s*(?:test|data|predisposition|feature)|\\bDNA\\s*(?:test|screen)|\\bgenome\\b|\\bhereditary\\b|\\bfamily\\s*medical\\s*history"
+  score: 8
+  category: "discrimination_genetic"
+  articleRef: "EU Charter Art. 21; GDPR Art. 9 — Genetic features are special category data"
+
+- pattern: "\\bsexual\\s*orientation|\\bhomosexual|\\bheterosexual|\\bgay\\s*candidate|\\blesbian\\s*candidate|\\bgender\\s*identity|\\btransgender\\b|\\bnon[- ]?binary|\\bsame[- ]?sex"
+  score: 8
+  category: "discrimination_orientation"
+  articleRef: "Dir. 2000/78/EC; EU Charter Art. 21 — Sexual orientation/gender identity discrimination"
+
+- pattern: "\\bpolitical\\s*(?:views?|opinions?|party|affiliat)|\\btrade\\s*union|\\bunion\\s*member|\\bunion\\s*activit|\\bstrike\\s*history|\\bcollective\\s*bargaining|\\bworks?\\s*council"
+  score: 8
+  category: "discrimination_political"
+  articleRef: "EU Charter Art. 21; GDPR Art. 9 — Political opinion/trade union membership"
+
+- pattern: "\\bphilosophical\\s*belief|\\bvegan(?:ism)?\\b|\\bethical\\s*belief|\\bconscientious\\s*objection|\\bpersonal\\s*conviction|\\bideological\\s*(?:views?|position)"
+  score: 7
+  category: "discrimination_belief"
+  articleRef: "GDPR Art. 9; Dir. 2000/78/EC — Philosophical beliefs are protected (Grainger v Nicholson)"
+
+- pattern: "\\bsex\\s*life|\\bsexual\\s*history|\\bsexual\\s*partner|\\bsexual\\s*relationship|\\bsexual\\s*activit"
+  score: 8
+  category: "discrimination_sex_life"
+  articleRef: "GDPR Art. 9 — Sex life is a special category distinct from sexual orientation"
+
+# ============================================================
+# Human oversight — Universal patterns (GDPR Art. 22)
+# ============================================================
+
+- pattern: "\\bnon[- ]?appealable|\\bfinal\\s*decision|\\bbinding\\s*recommendation|no\\s*(?:right|mechanism|option)\\s*(?:to\\s*)?(?:appeal|contest|challenge)|cannot\\s*be\\s*(?:overridden|reversed)"
+  score: 8
+  category: "no_right_to_contest"
+  articleRef: "GDPR Art. 22(3) — Data subjects have right to contest automated decisions"
+
+# ============================================================
+# Right to explanation (AI Act Art. 86)
+# ============================================================
+
+- pattern: "\\bno\\s*explanation|\\bwithout\\s*explanation|\\bno\\s*reason\\s*(?:given|provided)|\\bwithout\\s*(?:giving|providing)\\s*(?:a\\s*)?reason|\\bundisclosed\\s*(?:criteria|reason|factor)|\\bblack\\s*box\\s*decision|\\bunexplained\\s*(?:rejection|decision|score|rating)"
+  score: 7
+  category: "right_to_explanation"
+  articleRef: "AI Act Art. 86 — Affected persons have right to clear, meaningful explanation of AI's role in decision"
+
+- pattern: "\\bno\\s*feedback\\s*(?:to|for)\\s*(?:candidate|applicant)|\\bcandidate\\s*(?:will|shall)\\s*not\\s*(?:be\\s*)?(?:informed|notified|told)|\\bdo\\s*not\\s*(?:inform|notify|explain|tell)\\s*(?:the\\s*)?(?:candidate|applicant)"
+  score: 7
+  category: "right_to_explanation"
+  articleRef: "AI Act Art. 86; Art. 50(1) — Persons subject to AI decisions must be informed and given explanations"
+
+# ============================================================
+# Fundamental Rights Impact Assessment (AI Act Art. 27)
+# ============================================================
+
+- pattern: "\\bskip\\s*(?:the\\s*)?(?:impact|risk|rights?)\\s*assessment|\\bno\\s*(?:need\\s*for\\s*)?(?:impact|risk|rights?)\\s*assessment|\\bwithout\\s*(?:impact|risk|rights?)\\s*assessment|\\bbypass\\s*(?:compliance|assessment|review)"
+  score: 8
+  category: "missing_fria"
+  articleRef: "AI Act Art. 27 — Fundamental rights impact assessment REQUIRED before deploying high-risk AI"
+
+# ============================================================
+# AI Literacy (AI Act Art. 4)
+# ============================================================
+
+- pattern: "\\bno\\s*(?:need\\s*(?:for|to)\\s*)?(?:training|understand|learn)\\s*(?:about\\s*)?(?:the\\s*)?(?:AI|system|algorithm)|\\bdon'?t\\s*need\\s*to\\s*(?:understand|know)|\\bjust\\s*(?:trust|follow|use)\\s*(?:the\\s*)?(?:AI|system|algorithm|output)"
+  score: 5
+  category: "ai_literacy"
+  articleRef: "AI Act Art. 4 — Organizations must ensure sufficient AI literacy for staff interacting with AI"
+
+# ============================================================
+# Data governance / excessive collection (GDPR Art. 5/9)
+# ============================================================
+
+- pattern: "\\bmedical\\s*history|\\bhealth\\s*records?|\\bblood\\s*type|\\bDNA\\s*sample|\\bbiometric\\s*data|\\bfingerprint"
+  score: 7
+  category: "data_excessive"
+  articleRef: "GDPR Art. 9; Art. 5(1)(c) — Special category data / data minimisation"
+
+- pattern: "\\bsocial\\s*media\\s*(?:profiles?|accounts?|passwords?)|\\bFacebook\\s*(?:profile|account)|\\bInstagram\\s*(?:profile|account)|\\bpersonal\\s*photos?"
+  score: 6
+  category: "data_excessive"
+  articleRef: "GDPR Art. 5(1)(c) — Disproportionate data collection beyond job requirements"

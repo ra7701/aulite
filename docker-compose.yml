@@ -1,0 +1,16 @@
+services:
+  aulite:
+    build: .
+    ports:
+      - "${AULITE_PORT:-3000}:3000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - AULITE_DOMAINS=${AULITE_DOMAINS:-hr}
+      - AULITE_PORT=3000
+    volumes:
+      - aulite-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  aulite-data:

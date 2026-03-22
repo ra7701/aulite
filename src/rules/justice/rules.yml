@@ -1,0 +1,85 @@
+# Aulite Justice Rules — AI Act Annex III Point 8
+# AI in administration of justice and democratic processes
+#
+# Sources: AI Act Annex III 8(a)(b),
+#          EU Charter Art. 47 (effective remedy/fair trial), Art. 48 (presumption of innocence),
+#          ECHR Art. 6 (right to fair trial), Art. 13 (effective remedy),
+#          Recommendation CM/Rec(2020)1 of the Council of Europe (CEPEJ Ethical Charter)
+
+# ============================================================
+# CRITICAL (Score: 9-10) — Threats to fair trial / judicial independence
+# ============================================================
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic(?:ally)?|ed)?\\s*(?:\\w+\\s*)?(?:render|issue|deliver|make|generat)(?:ing|ed|s)?\\s*(?:a\\s*)?(?:judicial\\s*)?(?:judgment|verdict|ruling|sentence|order|decision)\\s*(?:without|no|replacing)\\s*(?:a\\s*)?(?:human|judge|judicial|magistrate|court)"
+  score: 10
+  category: "automated_judicial_decision"
+  articleRef: "AI Act Annex III 8(a); EU Charter Art. 47; ECHR Art. 6 — AI cannot replace judicial authority in rendering decisions"
+
+- pattern: "\\bAI\\s*(?:replac|substitut|eliminat)(?:ing|e|es)?\\s*(?:judge|judicial\\s*(?:authority|discretion|function)|magistrate|court)|\\b(?:judge|judicial\\s*(?:authority|discretion))\\s*(?:replac|substitut)(?:ed|ing)?\\s*(?:by|with)\\s*(?:AI|algorithm)"
+  score: 10
+  category: "ai_replacing_judge"
+  articleRef: "ECHR Art. 6; CEPEJ Ethical Charter — AI must not replace judicial decision-making authority"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:sentence|sentencing|condemn|punish)(?:ing|ed)?\\s*(?:recommendation|suggestion|proposal|guidance|decision)\\s*(?:as\\s*)?(?:final|binding|definitive|mandatory)"
+  score: 9
+  category: "binding_sentencing"
+  articleRef: "AI Act Annex III 8(a); EU Charter Art. 47, Art. 49(3) — Binding AI sentencing violates right to individualised punishment"
+
+- pattern: "\\b(?:judicial|court|legal)\\s*(?:profil|categoris|predict)(?:ing|ation|ed)?\\s*(?:based\\s*on|by|using)\\s*(?:demographic|race|ethnic|gender|sex|nationality|religion|socio|income|background)"
+  score: 9
+  category: "judicial_demographic_profiling"
+  articleRef: "EU Charter Art. 21, Art. 47; CEPEJ Ethical Charter Principle 4 — Judicial profiling based on demographics violates non-discrimination and fair trial"
+
+# ============================================================
+# HIGH (Score: 7-8) — High-risk judicial AI uses
+# ============================================================
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:sentenc|sentence\\s*(?:recommend|suggest|calculat|propos|predict))(?:ing|ed|ation)?\\s*(?:tool|system|model|software)"
+  score: 8
+  category: "ai_sentencing"
+  articleRef: "AI Act Annex III 8(a); CEPEJ Ethical Charter — AI sentencing tools are high-risk, must be advisory only"
+
+- pattern: "\\brecidivism\\s*(?:risk|predict|scor|assess|probabil)(?:ion|ing|ity|ment|ed)?\\s*(?:in|for|during)\\s*(?:sentencing|parole|probation|bail|judicial|court|legal)"
+  score: 8
+  category: "recidivism_judicial"
+  articleRef: "AI Act Annex III 8(a); Art. 5(1)(d) — Recidivism prediction in judicial proceedings is high-risk/potentially prohibited"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:case\\s*)?(?:outcome\\s*)?(?:predict|forecast|estimat)(?:ion|ing|ed)?\\s*(?:used|present|submit|introduc)(?:ed)?\\s*(?:as|for|in)\\s*(?:evidence|proof|basis|foundation|grounds)"
+  score: 8
+  category: "prediction_as_evidence"
+  articleRef: "AI Act Annex III 8(a); ECHR Art. 6 — AI outcome predictions must not be presented as evidence in proceedings"
+
+- pattern: "\\blegal\\s*(?:research|citation|reference|case\\s*law)\\s*(?:AI|generat|automat)(?:ed|ion|ically)?\\s*(?:fabricat|halluncinat|fake|false|non[- ]?existent|invented|made[- ]?up)|\\bfabricat(?:ed|ing)?\\s*(?:legal\\s*)?(?:citation|case|precedent|reference)"
+  score: 8
+  category: "fabricated_citations"
+  articleRef: "AI Act Art. 15; ECHR Art. 6 — AI-generated fabricated legal citations undermine fair trial rights"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:dispute|conflict|complaint|claim)\\s*(?:resolution|settlement|mediation|arbitration)\\s*(?:without|no)\\s*(?:consent|agreement|opt[- ]?in|volunt|party\\s*(?:consent|agreement))"
+  score: 8
+  category: "forced_adr"
+  articleRef: "AI Act Annex III 8(b); EU Charter Art. 47 — AI dispute resolution without party consent violates right to effective remedy"
+
+- pattern: "\\bno\\s*(?:transparency|disclosure|notification|information)\\s*(?:about|regarding|of)\\s*(?:AI|algorithm|automated)\\s*(?:use|involvement|system|tool)\\s*(?:in|during)\\s*(?:court|judicial|trial|legal|proceeding|case|litigation|arbitration)"
+  score: 8
+  category: "no_transparency_judicial"
+  articleRef: "AI Act Art. 86; ECHR Art. 6 — Parties must be informed about AI involvement in judicial proceedings"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:bail|parole|probation|release|conditional\\s*release)\\s*(?:decision|recommendation|assessment)\\s*(?:without|no)\\s*(?:human\\s*(?:review|oversight|decision)|judicial\\s*(?:review|oversight|discretion))"
+  score: 8
+  category: "automated_bail_parole"
+  articleRef: "AI Act Annex III 8(a); EU Charter Art. 6, Art. 47 — AI bail/parole recommendations require judicial oversight"
+
+- pattern: "\\bevidence\\s*(?:weigh|evaluat|assess|apprais|analys)(?:ing|ation|ed)?\\s*(?:by|via|using|through)\\s*(?:AI|algorithm|automated)\\s*(?:without|no|replacing)\\s*(?:human|judicial|judge|court)"
+  score: 8
+  category: "automated_evidence_assessment"
+  articleRef: "AI Act Annex III 8(a); ECHR Art. 6 — Evidence assessment by AI without human judicial review violates fair trial"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:legal\\s*aid|legal\\s*assistance)\\s*(?:eligibilit|entitlement|assessment|decision)\\s*(?:denial|without|no)\\s*(?:appeal|review|human|recourse)"
+  score: 7
+  category: "automated_legal_aid"
+  articleRef: "EU Charter Art. 47(3) — AI legal aid eligibility decisions without appeal undermine access to justice"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:interpret|appl)(?:ing|ication|ed)?\\s*(?:of\\s*)?(?:law|statute|regulation|legislation|legal\\s*(?:text|provision|norm|rule))\\s*(?:without|no|replacing)\\s*(?:human|judicial|legal\\s*(?:expert|professional|analysis))"
+  score: 7
+  category: "automated_legal_interpretation"
+  articleRef: "AI Act Annex III 8(a) — AI interpretation/application of law requires human legal oversight"

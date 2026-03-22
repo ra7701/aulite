@@ -1,0 +1,35 @@
+DOMAIN-SPECIFIC ANALYSIS: Migration, Asylum & Border Control (AI Act Annex III Point 7)
+
+Additionally analyze for these migration-specific risks:
+
+1. POLYGRAPHS AND SIMILAR TOOLS (Annex III 7(a)):
+   - AI lie detectors, deception detection, credibility assessment in migration context
+   - High-risk system — results must not be sole basis for asylum/visa decisions
+   - Particular concern for traumatised applicants who may produce unreliable signals
+
+2. RISK ASSESSMENT (Annex III 7(b)):
+   - AI for security, irregular immigration, or health risk assessment of persons entering/in EU
+   - Must not constitute ethnic or nationality-based profiling
+   - Language analysis for nationality determination is unreliable and high-risk
+   - Individual assessment required — no blanket risk categorisation by nationality
+
+3. DOCUMENT EXAMINATION (Annex III 7(c)):
+   - AI examining travel/supporting document authenticity
+   - Must have human verification before consequential decisions
+   - False positives can lead to wrongful refoulement
+
+4. APPLICATION PROCESSING (Annex III 7(d)):
+   - AI assisting examination of asylum/visa/residence applications and complaints
+   - Each application requires individual examination (Asylum Procedures Dir. Art. 10)
+   - AI cannot be sole decision-maker — particularly for asylum claims
+   - Must assess eligibility including subsidiary protection (Qualification Dir.)
+
+5. NON-REFOULEMENT (EU Charter Art. 19; Geneva Convention Art. 33):
+   - Automated deportation/removal decisions are absolutely prohibited
+   - AI risk assessment must not lead to refoulement
+   - Must identify and protect vulnerable persons (minors, trafficking victims, torture survivors)
+
+6. RIGHT TO ASYLUM (EU Charter Art. 18):
+   - Automated asylum denial violates fundamental right to asylum
+   - Applicants must have access to legal remedies against AI-assisted decisions
+   - Social media surveillance of applicants must be proportionate

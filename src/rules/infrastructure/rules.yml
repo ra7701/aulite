@@ -1,0 +1,74 @@
+# Aulite Critical Infrastructure Rules — AI Act Annex III Point 2
+# AI as safety components in critical infrastructure management/operation
+#
+# Sources: AI Act Annex III 2(a)(b), Art. 9 (risk management), Art. 15 (robustness),
+#          NIS2 Directive 2022/2555, CER Directive 2022/2557,
+#          Machinery Regulation 2023/1230
+
+# ============================================================
+# CRITICAL (Score: 9) — Safety-critical failures
+# ============================================================
+
+- pattern: "\\bautonomous(?:ly)?\\s*(?:control|operat|manag)\\s*(?:power\\s*grid|water\\s*supply|gas\\s*supply|electric|heating|traffic|railway|aviation|nuclear)|\\bno\\s*human\\s*(?:oversight|fallback|intervention|operator)\\s*(?:for|in)\\s*(?:critical|safety|infrastructure)"
+  score: 9
+  category: "autonomous_infrastructure_control"
+  articleRef: "AI Act Annex III 2(a); Art. 14 — Critical infrastructure AI requires human oversight and fallback mechanisms"
+
+- pattern: "\\boverride\\s*(?:safety|emergency|shutdown|protection)\\s*(?:system|mechanism|protocol|procedure)|\\bdisable\\s*(?:safety|failsafe|fail[- ]?safe|emergency)|\\bbypass\\s*(?:safety|security)\\s*(?:check|control|protocol|system)"
+  score: 9
+  category: "safety_override"
+  articleRef: "AI Act Art. 9(4); Annex III 2(a) — Safety mechanisms in critical infrastructure must not be overridden by AI"
+
+- pattern: "\\bno\\s*(?:fail[- ]?safe|fallback|redundanc|backup|contingenc)\\s*(?:mechanism|system|plan|procedure)|\\bsingle\\s*point\\s*of\\s*failure|\\bno\\s*manual\\s*(?:override|fallback|backup)"
+  score: 9
+  category: "no_failsafe"
+  articleRef: "AI Act Art. 15(4); Art. 9 — Safety components must have fail-safe mechanisms and redundancy"
+
+- pattern: "\\bcyber(?:security)?\\s*(?:bypass|disable|ignore|skip)|\\bno\\s*(?:cyber)?security\\s*(?:measure|control|protocol|assessment)|\\bignor(?:e|ing)\\s*(?:cyber)?security\\s*(?:requirement|standard|protocol)|\\bunpatched\\s*(?:critical|infrastructure)"
+  score: 9
+  category: "cybersecurity_bypass"
+  articleRef: "AI Act Art. 15(5); NIS2 Dir. 2022/2555 — Critical infrastructure AI must meet cybersecurity requirements"
+
+# ============================================================
+# HIGH (Score: 7-8) — Compliance gaps
+# ============================================================
+
+- pattern: "\\bdeploy(?:ing)?\\s*(?:AI|system|algorithm)\\s*(?:in|to|for)\\s*(?:critical|safety)\\s*(?:infrastructure|system)\\s*(?:without|before|no)\\s*(?:test|valid|certif|assess|audit)|\\buntested\\s*(?:AI|system|model)\\s*(?:in|for)\\s*(?:critical|safety|infrastructure)"
+  score: 8
+  category: "untested_deployment"
+  articleRef: "AI Act Art. 9; Art. 43 — AI in critical infrastructure requires risk management and conformity assessment before deployment"
+
+- pattern: "\\bno\\s*(?:incident|accident|failure)\\s*(?:report|log|notification|procedure)|\\bskip\\s*(?:incident|failure)\\s*reporting|\\bdo\\s*not\\s*(?:report|log|notify)\\s*(?:incident|failure|malfunction)"
+  score: 7
+  category: "no_incident_reporting"
+  articleRef: "AI Act Art. 62; NIS2 Dir. Art. 23 — Serious incidents must be reported to authorities"
+
+- pattern: "\\bautonomous\\s*(?:emergency|crisis)\\s*(?:response|decision|action)\\s*(?:without|no)\\s*(?:human|escalat)|\\bAI\\s*(?:handling|managing)\\s*(?:emergency|crisis)\\s*(?:without|no)\\s*(?:human|operator)"
+  score: 8
+  category: "autonomous_emergency"
+  articleRef: "AI Act Art. 14; Annex III 2(a) — Emergency responses in critical infrastructure require human escalation"
+
+- pattern: "\\btraffic\\s*(?:management|control|signal)\\s*(?:system|AI)\\s*(?:without|no)\\s*(?:monitoring|oversight|supervision)|\\bautonomous\\s*traffic\\s*(?:management|control|routing)"
+  score: 8
+  category: "traffic_management"
+  articleRef: "AI Act Annex III 2(b) — AI in road traffic management is high-risk, requires human oversight"
+
+- pattern: "\\bSCADA\\s*(?:control|access)\\s*(?:by|via|through)\\s*(?:AI|automated)|\\bindustrial\\s*control\\s*(?:system|network)\\s*(?:automated|autonomous|AI)|\\bPLC\\s*(?:program|control)\\s*(?:by|via)\\s*(?:AI|automated)"
+  score: 8
+  category: "industrial_control"
+  articleRef: "AI Act Annex III 2(a); NIS2 Dir. 2022/2555 — Industrial control systems managed by AI are high-risk"
+
+- pattern: "\\bwater\\s*(?:treatment|purification|distribution)\\s*(?:AI|automated|autonomous)|\\bchemical\\s*dosing\\s*(?:AI|automated|autonomous)|\\bpower\\s*(?:generation|distribution)\\s*(?:AI|automated|autonomous)\\s*(?:without|no)\\s*(?:human|operator)"
+  score: 8
+  category: "utility_automation"
+  articleRef: "AI Act Annex III 2(a) — AI managing water/gas/electricity supply is high-risk"
+
+- pattern: "\\bno\\s*(?:risk\\s*)?(?:management|assessment)\\s*(?:system|plan|procedure)\\s*(?:for|in)\\s*(?:AI|critical|safety)|\\bskip\\s*(?:risk\\s*)?(?:management|assessment)|\\bwithout\\s*(?:risk\\s*)?(?:management|assessment)"
+  score: 7
+  category: "no_risk_management"
+  articleRef: "AI Act Art. 9 — High-risk AI systems require established risk management system throughout lifecycle"
+
+- pattern: "\\bno\\s*(?:performance|accuracy|reliability)\\s*(?:monitoring|testing|validation)\\s*(?:after|post)\\s*(?:deploy|launch|production)|\\bpost[- ]?market\\s*(?:monitoring|surveillance)\\s*(?:not\\s*)?(?:required|needed|planned)"
+  score: 7
+  category: "no_post_market_monitoring"
+  articleRef: "AI Act Art. 72 — Providers must establish post-market monitoring system for high-risk AI"

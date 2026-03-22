@@ -1,0 +1,35 @@
+DOMAIN-SPECIFIC ANALYSIS: Law Enforcement (AI Act Annex III Point 6)
+
+Additionally analyze for these law enforcement-specific risks:
+
+1. INDIVIDUAL RISK ASSESSMENT (Annex III 6(a)):
+   - AI for risk assessment of natural persons: risk of offending/reoffending, risk for potential victims
+   - Must include human oversight and right to contest
+   - Predictive policing targeting individuals is prohibited under Art. 5(1)(d)
+   - Bail/detention AI recommendations require judicial human review
+
+2. POLYGRAPHS AND SIMILAR TOOLS (Annex III 6(b)):
+   - AI lie detectors, deception detection, credibility assessment in law enforcement
+   - High-risk system requiring conformity assessment
+   - Results must not be treated as determinative
+
+3. EVIDENCE RELIABILITY (Annex III 6(c)):
+   - AI evaluating reliability of evidence in investigation/prosecution
+   - Requires human oversight — AI cannot be sole arbiter of evidence
+   - Must be transparent about methodology and limitations
+
+4. CRIMINAL PROFILING (Annex III 6(d)):
+   - AI for profiling in detection, investigation, prosecution
+   - Profiling based solely on personality traits or demographics approaches prohibition under Art. 5(1)(d)
+   - Racial/ethnic profiling is absolutely prohibited
+
+5. CRIME ANALYTICS (Annex III 6(e)):
+   - AI for crime analytics searching large complex datasets
+   - Must have audit trail and transparency
+   - Pattern detection must not function as mass surveillance
+
+6. FUNDAMENTAL RIGHTS IN CRIMINAL JUSTICE:
+   - EU Charter Art. 48: Presumption of innocence — AI cannot determine guilt
+   - EU Charter Art. 47: Right to effective remedy — persons must be able to contest AI-informed decisions
+   - ECHR Art. 6: Right to fair trial — AI use must not undermine procedural fairness
+   - LED 2016/680: Persons must be informed about automated decision-making in law enforcement

@@ -1,0 +1,33 @@
+DOMAIN-SPECIFIC ANALYSIS: Education & Vocational Training (AI Act Annex III Point 3)
+
+Additionally analyze for these education-specific risks:
+
+1. ACCESS TO EDUCATION (Annex III 3(a)):
+   - AI determining access or admission to educational/vocational training institutions
+   - Automated admission, rejection, or exclusion decisions require human oversight
+   - EU Charter Art. 14 guarantees the right to education
+
+2. LEARNING ASSESSMENT (Annex III 3(b)):
+   - AI evaluating learning outcomes, including steering the learning process
+   - Automated grading/assessment must not be final without human review
+   - Students must have right to contest AI-assessed outcomes
+
+3. EDUCATIONAL LEVEL ASSESSMENT (Annex III 3(c)):
+   - AI assessing appropriate level of education for an individual
+   - Ability streaming/tracking by AI risks perpetuating inequality
+   - Special educational needs classification requires professional involvement
+
+4. EXAM PROCTORING (Annex III 3(d)):
+   - AI monitoring/detecting prohibited behaviour during tests
+   - Biometric proctoring raises proportionality concerns
+   - Emotion recognition in education is prohibited (Art. 5(1)(f))
+
+5. CHILDREN'S DATA PROTECTION (GDPR Art. 8; UNCRC):
+   - Enhanced protection for children's personal data
+   - Parental consent required for data processing of minors
+   - Data minimisation is particularly strict for children
+
+6. NON-DISCRIMINATION IN EDUCATION (Dir. 2000/43/EC, 2000/78/EC):
+   - AI must not discriminate based on protected characteristics in educational access
+   - Student profiling by race, ethnicity, disability, or socioeconomic status is prohibited
+   - Predictive models must not exclude students from opportunities

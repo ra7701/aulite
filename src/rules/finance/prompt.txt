@@ -1,0 +1,39 @@
+DOMAIN-SPECIFIC ANALYSIS: Finance & Essential Services (AI Act Annex III Point 5)
+
+Additionally analyze for these finance-specific risks:
+
+1. CREDITWORTHINESS ASSESSMENT (Annex III 5(a)):
+   - AI to evaluate creditworthiness or establish credit scores of natural persons (exception: fraud detection)
+   - Credit decisions must not be based on protected characteristics (race, gender, religion, etc.)
+   - Social media-based credit scoring is disproportionate
+   - Geographic/postcode-based exclusion functions as proxy discrimination
+   - Affected persons must be informed about the logic involved (GDPR Art. 22(3))
+
+2. INSURANCE RISK ASSESSMENT (Annex III 5(b)):
+   - AI for risk assessment and pricing in life and health insurance
+   - Genetic data must NEVER be used for insurance decisions (GDPR Art. 9)
+   - Health-based discrimination in non-health insurance is prohibited
+   - Must comply with Solvency II actuarial fairness requirements
+
+3. AUTOMATED FINANCIAL DECISIONS (GDPR Art. 22):
+   - Automated denial of credit, insurance, or financial services requires:
+     - Meaningful information about the logic involved
+     - Right to obtain human intervention
+     - Right to express point of view and contest the decision
+   - Account closure/freezing must include notification and recourse
+
+4. NON-DISCRIMINATION (Dir. 2004/113/EC):
+   - Equal treatment in access to goods and services regardless of sex
+   - Extends to all EU Charter Art. 21 protected characteristics
+   - Algorithmic pricing must not discriminate on protected grounds
+   - Proxy variables (geography, social media behaviour) can constitute indirect discrimination
+
+5. VULNERABILITY PROTECTION (AI Act Art. 5(1)(b)):
+   - AI must not exploit financial vulnerability, debt distress, or economic disadvantage
+   - Cross-selling/upselling targeting vulnerable consumers is prohibited
+   - Enhanced duty of care for elderly, disabled, or financially distressed persons
+
+6. TRANSPARENCY (AI Act Art. 13; Consumer Credit Directive):
+   - Credit scoring methodology must be explainable
+   - Consumers must be informed when AI is used in financial decisions
+   - Predictive default models must disclose factors considered

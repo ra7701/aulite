@@ -1,0 +1,38 @@
+DOMAIN-SPECIFIC ANALYSIS: Administration of Justice & Democratic Processes (AI Act Annex III Point 8)
+
+Additionally analyze for these justice-specific risks:
+
+1. JUDICIAL DECISION SUPPORT (Annex III 8(a)):
+   - AI to assist judicial authority in researching and interpreting facts and the law
+   - AI to assist in applying the law to a concrete set of facts
+   - AI must remain ADVISORY — cannot replace judicial authority
+   - Judges must retain full discretion over final decisions
+   - CEPEJ Ethical Charter: AI must respect judicial independence
+
+2. ALTERNATIVE DISPUTE RESOLUTION (Annex III 8(b)):
+   - AI in alternative dispute resolution bodies
+   - Requires party consent — forced AI mediation/arbitration violates Art. 47
+   - Parties must retain access to traditional judicial remedies
+
+3. SENTENCING AND RECIDIVISM (Annex III 8(a); Art. 5(1)(d)):
+   - AI sentencing tools must be advisory only, never binding
+   - Recidivism prediction in judicial context is high-risk
+   - Profiling based solely on personality traits/demographics approaches prohibition
+   - Right to individualised punishment (EU Charter Art. 49(3))
+
+4. FAIR TRIAL RIGHTS (EU Charter Art. 47; ECHR Art. 6):
+   - AI cannot determine guilt or innocence
+   - Parties must be informed about AI involvement in proceedings
+   - Evidence assessment by AI requires human judicial review
+   - AI case outcome predictions must not be presented as evidence
+   - Right to an effective remedy against AI-assisted decisions
+
+5. JUDICIAL INTEGRITY:
+   - AI-generated legal citations must be verified — fabricated citations undermine proceedings
+   - AI interpretation of law requires human legal oversight
+   - Judicial profiling based on demographics is prohibited (CEPEJ Principle 4)
+
+6. ACCESS TO JUSTICE (EU Charter Art. 47(3)):
+   - AI legal aid eligibility decisions must include right to appeal
+   - AI must not create barriers to accessing courts or legal remedies
+   - Particular attention to vulnerable litigants and self-represented parties

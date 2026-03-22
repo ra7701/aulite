@@ -1,0 +1,88 @@
+# Aulite Configuration
+# EU AI Act Compliance Proxy
+#
+# Copy this file to aulite.config.yml and customize.
+# All values shown are defaults.
+
+server:
+  port: 3000
+  host: "0.0.0.0"
+
+provider:
+  # Which AI provider to proxy to: "anthropic" or "openai"
+  default: anthropic
+
+  # Provider API keys can also be set via environment variables:
+  #   OPENAI_API_KEY=sk-...
+  #   ANTHROPIC_API_KEY=sk-ant-...
+  #
+  # Or inline (not recommended for production):
+  # openai:
+  #   baseUrl: https://api.openai.com
+  #   apiKey: sk-...
+  # anthropic:
+  #   baseUrl: https://api.anthropic.com
+  #   apiKey: sk-ant-...
+  # azure:
+  #   baseUrl: https://your-resource.openai.azure.com
+  #   apiKey: your-azure-key
+  #   deploymentId: gpt-4
+  #   apiVersion: "2024-02-01"
+
+analysis:
+  # "advisory" = log and warn, never block requests
+  # "enforcing" = block requests that exceed the block threshold
+  mode: advisory
+
+  # Compliance domains to activate. Each domain loads specific rules
+  # for its EU AI Act Annex III category.
+  #
+  # Available domains:
+  #   hr              — Employment/recruitment (Annex III Point 4)
+  #   finance         — Credit scoring, insurance (Annex III Point 5)
+  #   biometrics      — Biometric identification (Annex III Point 1)
+  #   education       — Education & training (Annex III Point 3)
+  #   infrastructure  — Critical infrastructure (Annex III Point 2)
+  #   law-enforcement — Law enforcement (Annex III Point 6)
+  #   migration       — Migration & asylum (Annex III Point 7)
+  #   justice         — Administration of justice (Annex III Point 8)
+  #
+  # Base rules (Art. 5 prohibitions, GDPR Art. 9) are ALWAYS loaded.
+  # Can also be set via: AULITE_DOMAINS=hr,finance
+  domains:
+    - hr
+
+  # Optional: custom rules directory
+  # Can also be set via: AULITE_RULES_DIR=/path/to/rules
+  # rulesDir: ./my-rules
+
+# API authentication (recommended for production)
+# Clients must send x-api-key header or Authorization: Bearer <key>
+# Can also be set via: AULITE_API_KEYS=key1,key2
+# auth:
+#   apiKeys:
+#     - "your-secret-key-here"
+
+# Rate limiting (per API key, sliding window)
+# Can also be set via: AULITE_RATE_LIMIT=60
+# rateLimit:
+#   requestsPerMinute: 60
+
+  # LLM Judge: secondary AI-powered analysis for deeper compliance checks
+  llmJudge:
+    enabled: false
+    model: claude-sonnet-4-6
+    # Fraction of clean requests to sample (0.0 - 1.0)
+    # Flagged requests are always judged regardless of sample rate
+    sampleRate: 0.1
+
+  # Risk score thresholds (0-10 scale)
+  thresholds:
+    warn: 4    # Scores >= 4 generate warnings in audit log
+    block: 7   # Scores >= 7 block requests (enforcing mode only)
+
+logging:
+  # SQLite database path for tamper-evident audit trail
+  database: "./aulite-audit.db"
+  # How long to retain audit entries
+  retentionDays: 365

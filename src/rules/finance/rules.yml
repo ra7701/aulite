@@ -1,0 +1,81 @@
+# Aulite Finance Rules — AI Act Annex III Point 5
+# AI in access to essential private services and public services (finance focus)
+#
+# Sources: AI Act Annex III 5(a)(b), GDPR Art. 22,
+#          Consumer Credit Dir. 2008/48/EC (recast 2023/2225),
+#          Dir. 2004/113/EC (equal treatment goods/services),
+#          Solvency II Dir. 2009/138/EC, Insurance Distribution Dir. 2016/97,
+#          Anti-Money Laundering Dir. 2015/849, PSD2 Dir. 2015/2366
+
+# ============================================================
+# CRITICAL (Score: 9-10) — Prohibited uses / fundamental violations
+# ============================================================
+
+- pattern: "\\b(?:credit|loan|mortgage)\\s*(?:scor|assess|evaluat|decision|denial|reject)(?:ing|ed|ation)?\\s*(?:based\\s*on|using|factor)\\s*(?:\\w+\\s*)?(?:race|ethnic|religion|gender|sex|disability|orientation|political|nationality|genetic)"
+  score: 9
+  category: "discriminatory_credit"
+  articleRef: "AI Act Annex III 5(a); Dir. 2004/113/EC; EU Charter Art. 21 — Credit decisions based on protected characteristics are prohibited"
+
+- pattern: "\\binsurance\\s*(?:pric|premium|risk\\s*assess|denial|reject|refus|exclud)(?:ing|ed|ation)?\\s*(?:based\\s*on|using|factor)\\s*(?:\\w+\\s*)?(?:genetic|DNA|genome|hereditary|family\\s*medical)|\\b(?:genetic|DNA|genome)\\s*(?:data|test|screen|information)\\s*(?:for|in|used\\s*(?:for|in))\\s*(?:insurance|underwriting)"
+  score: 10
+  category: "genetic_insurance"
+  articleRef: "GDPR Art. 9; EU Charter Art. 21 — Using genetic data for insurance pricing/denial is PROHIBITED"
+
+- pattern: "\\b(?:automat|AI)(?:ically|ed)?\\s*(?:deny|reject|refuse|decline)\\s*(?:credit|loan|mortgage|insurance|application|claim)\\s*(?:without|no)\\s*(?:explanation|reason|justification|right\\s*to\\s*(?:appeal|contest))"
+  score: 9
+  category: "automated_financial_denial"
+  articleRef: "AI Act Annex III 5(a); GDPR Art. 22 — Automated financial decisions without explanation/right to contest violate data subject rights"
+
+# ============================================================
+# HIGH (Score: 7-8) — High-risk financial AI uses
+# ============================================================
+
+- pattern: "\\bcredit\\s*(?:scor|rating|worthiness)(?:ing|e)?\\s*(?:based\\s*on|using|from)\\s*(?:social\\s*media|social\\s*network|online\\s*(?:behavio[u]?r|activit|post|profil))"
+  score: 7
+  category: "social_media_credit"
+  articleRef: "AI Act Annex III 5(a); GDPR Art. 5(1)(c) — Social media-based creditworthiness assessment is disproportionate"
+
+- pattern: "\\b(?:credit|loan|mortgage|insurance)\\s*(?:scor|assess|decision|risk)(?:ing|ed)?\\s*(?:based\\s*on|using|factor)\\s*(?:zip\\s*code|postcode|neighbo[u]?rhood|address|location|area\\s*code|geographic)"
+  score: 7
+  category: "geographic_financial_exclusion"
+  articleRef: "Dir. 2004/113/EC; Dir. 2000/43/EC — Geographic-based financial exclusion is proxy discrimination"
+
+- pattern: "\\bhealth\\s*(?:data|record|information|status|condition|history)\\s*(?:in|for|used\\s*(?:in|for))\\s*(?:non[- ]?health\\s*)?(?:insurance|credit|loan|mortgage|financial)\\s*(?:decision|assessment|scoring|pricing)"
+  score: 8
+  category: "health_data_financial"
+  articleRef: "GDPR Art. 9; Dir. 2004/113/EC — Health data in non-health-insurance financial decisions violates data minimisation"
+
+- pattern: "\\b(?:automat|AI)(?:ically|ed)?\\s*(?:clos|freez|block|suspend|restrict)\\s*(?:account|card|payment|transaction)\\s*(?:without|no)\\s*(?:human\\s*review|notification|explanation|warning|right\\s*to\\s*contest)"
+  score: 8
+  category: "automated_account_action"
+  articleRef: "GDPR Art. 22; PSD2 Dir. Art. 58 — Automated account restrictions require notification and right to contest"
+
+- pattern: "\\b(?:insurance|underwriting)\\s*(?:risk|premium)\\s*(?:assess|pric|calculat)(?:ing|ed|ation)?\\s*(?:based\\s*on|using)\\s*(?:health|medical|biometric|genetic|pregnancy|disability|chronic)"
+  score: 8
+  category: "insurance_health_risk"
+  articleRef: "AI Act Annex III 5(b); Solvency II; Dir. 2004/113/EC — Health-based insurance risk assessment requires strict proportionality"
+
+- pattern: "\\b(?:algorithm|AI|automat)(?:ic)?(?:ally)?\\s*(?:pric|charg|fee|rate|premium)(?:ing|e|s)?\\s*(?:discriminat|personali[sz]|differential|dynamic|individual)(?:ion|ed|ing)?\\s*(?:based\\s*on|by|using)\\s*(?:protected|personal|demographic|sensitive)"
+  score: 7
+  category: "algorithmic_pricing_discrimination"
+  articleRef: "Dir. 2004/113/EC; EU Charter Art. 21 — Algorithmic pricing based on protected characteristics is discriminatory"
+
+- pattern: "\\bno\\s*(?:right|option|ability|mechanism)\\s*(?:to\\s*)?(?:contest|appeal|challenge|review|dispute)\\s*(?:credit|loan|insurance|financial)\\s*(?:decision|score|rating|assessment)|\\bcredit\\s*(?:decision|score|rating)\\s*(?:is\\s*)?(?:final|non[- ]?appealable|binding)"
+  score: 8
+  category: "no_contest_financial"
+  articleRef: "GDPR Art. 22(3); AI Act Art. 86 — Right to contest automated financial decisions is mandatory"
+
+- pattern: "\\b(?:predict|estimat|forecast)(?:ive|ing|ed)?\\s*(?:default|delinquenc|non[- ]?payment|insolvenc)\\s*(?:scor|model|system|risk)(?:ing|e)?\\s*(?:without|no)\\s*(?:transparenc|explanation|disclosure|informing)"
+  score: 7
+  category: "opaque_default_prediction"
+  articleRef: "AI Act Annex III 5(a); Art. 13 — Predictive default scoring must be transparent to affected persons"
+
+- pattern: "\\b(?:cross[- ]?sell|upsell|target|offer)(?:ing)?\\s*(?:based\\s*on|using|exploit)\\s*(?:vulnerab|financ(?:ial)?\\s*(?:difficult|distress|hardship)|debt|low[- ]?income|elderly|disadvantaged)"
+  score: 8
+  category: "vulnerability_exploitation_finance"
+  articleRef: "AI Act Art. 5(1)(b); Insurance Distribution Dir. Art. 17 — Exploiting financial vulnerability is prohibited"
+
+- pattern: "\\b(?:life|health)\\s*insurance\\s*(?:risk|premium|eligibility)\\s*(?:assess|pric|determin|evaluat)(?:ing|ed|ation)?\\s*(?:by|via|using|through)\\s*(?:AI|algorithm|machine\\s*learning|automated\\s*system)"
+  score: 7
+  category: "ai_insurance_pricing"
+  articleRef: "AI Act Annex III 5(b) — AI for life/health insurance risk assessment and pricing is high-risk"

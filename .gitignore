@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+.DS_Store
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Keys
+license-private.pem

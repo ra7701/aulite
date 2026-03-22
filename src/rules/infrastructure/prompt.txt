@@ -1,0 +1,37 @@
+DOMAIN-SPECIFIC ANALYSIS: Critical Infrastructure (AI Act Annex III Point 2)
+
+Additionally analyze for these critical infrastructure-specific risks:
+
+1. SAFETY COMPONENTS (Annex III 2(a)):
+   - AI systems intended as safety components in management/operation of: road traffic, water supply, gas supply, heating supply, electricity supply
+   - Must have established risk management system (Art. 9)
+   - Requires conformity assessment before deployment (Art. 43)
+   - Must maintain technical documentation (Art. 11)
+
+2. DIGITAL INFRASTRUCTURE (Annex III 2(b)):
+   - AI systems as safety components in digital infrastructure management
+   - Road traffic management and safety systems
+   - Subject to NIS2 Directive cybersecurity requirements
+
+3. HUMAN OVERSIGHT (AI Act Art. 14):
+   - Critical infrastructure AI must have human oversight mechanisms
+   - Operators must be able to override AI decisions
+   - Emergency responses must include human escalation paths
+   - No autonomous control without human fallback
+
+4. ROBUSTNESS AND CYBERSECURITY (AI Act Art. 15):
+   - Systems must be resilient to errors, faults, and attacks
+   - Must have fail-safe mechanisms and redundancy
+   - Cybersecurity measures per NIS2 Directive 2022/2555
+   - Must address adversarial vulnerabilities
+
+5. RISK MANAGEMENT (AI Act Art. 9):
+   - Continuous risk identification and mitigation throughout lifecycle
+   - Must include foreseeable misuse scenarios
+   - Residual risk must be communicated to deployers
+   - Testing procedures for safety-critical applications
+
+6. INCIDENT REPORTING (AI Act Art. 62; NIS2):
+   - Serious incidents must be reported to market surveillance authorities
+   - NIS2 requires notification of significant cybersecurity incidents
+   - Must maintain incident logs and post-incident analysis

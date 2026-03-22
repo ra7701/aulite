@@ -1,0 +1,85 @@
+# Aulite Law Enforcement Rules — AI Act Annex III Point 6
+# AI in law enforcement
+#
+# Sources: AI Act Annex III 6(a)-(e), Art. 5(1)(d)(h),
+#          Law Enforcement Directive 2016/680,
+#          EU Charter Art. 47 (effective remedy), Art. 48 (presumption of innocence),
+#          ECHR Art. 6 (fair trial), Art. 8 (private life)
+
+# ============================================================
+# CRITICAL (Score: 9-10) — Prohibited / severe rights violations
+# ============================================================
+
+- pattern: "\\bracial\\s*(?:profil|target)|\\bethnic\\s*(?:profil|target)|\\bprofile?(?:ing)?\\s*(?:based\\s*on|by|using)\\s*(?:race|ethnic|religion|national|skin\\s*colo[u]?r|country\\s*of\\s*origin)"
+  score: 10
+  category: "prohibited_racial_profiling"
+  articleRef: "AI Act Art. 5(1)(d); Dir. 2000/43/EC; EU Charter Art. 21 — Racial/ethnic profiling is PROHIBITED"
+
+- pattern: "\\b(?:mass|blanket|indiscriminate|untargeted|dragnet)\\s*(?:surveillance|monitoring|intercept|wiretap|data\\s*collect)(?:ion|ing)?\\s*(?:of|on)\\s*(?:citizen|population|public|communit|neighbourhood|area)"
+  score: 10
+  category: "prohibited_mass_surveillance"
+  articleRef: "EU Charter Art. 7, Art. 8; ECHR Art. 8 — Mass surveillance without targeted suspicion is PROHIBITED"
+
+- pattern: "\\bpredict(?:ive)?\\s*(?:polic|crime\\s*(?:forecast|map|predict)|hot[- ]?spot)(?:ing)?\\s*(?:\\w+\\s*)*(?:target|identif|flag|arrest|detain)(?:ing|s)?\\s*(?:individual|person|suspect|citizen)"
+  score: 9
+  category: "predictive_policing_individual"
+  articleRef: "AI Act Art. 5(1)(d); Annex III 6(a) — Predictive policing targeting individuals based on profiling is PROHIBITED"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:identif|flag|arrest|detain|charge)\\s*(?:suspect|person|individual|citizen)\\s*(?:without|no)\\s*(?:human\\s*(?:verification|review|oversight|confirmation)|warrant|judicial)"
+  score: 9
+  category: "automated_suspect_identification"
+  articleRef: "AI Act Annex III 6(a); Art. 14 — Automated suspect identification requires human verification"
+
+- pattern: "\\bAI\\s*(?:determin|assess|evaluat)(?:ing|e|es)?\\s*(?:guilt|innocence|criminal\\s*liabilit)|\\b(?:guilt|innocence)\\s*(?:determin|assess|establish)(?:ed|ing)?\\s*(?:by|via|using)\\s*(?:AI|algorithm)"
+  score: 9
+  category: "automated_guilt_determination"
+  articleRef: "EU Charter Art. 48; ECHR Art. 6(2) — Presumption of innocence; AI cannot determine guilt"
+
+# ============================================================
+# HIGH (Score: 7-8) — High-risk law enforcement uses
+# ============================================================
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:polygraph|lie\\s*detect|deception\\s*detect|truth\\s*verif|credibility\\s*assess)(?:ion|or|ing|ed)?\\s*(?:in|for|during)\\s*(?:interrogat|interview|investigation|law\\s*enforcement)"
+  score: 8
+  category: "ai_polygraph"
+  articleRef: "AI Act Annex III 6(b) — AI polygraphs/lie detectors in law enforcement are high-risk"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:assess|evaluat|analys|determin)(?:ing|e|es)?\\s*(?:reliability|credibility|veracity|authenticity)\\s*(?:of|for)\\s*(?:evidence|testimony|witness|statement)"
+  score: 8
+  category: "evidence_reliability"
+  articleRef: "AI Act Annex III 6(c) — AI assessing evidence reliability is high-risk, requires human oversight"
+
+- pattern: "\\bcriminal\\s*(?:profil|risk\\s*(?:assess|scor|predict))(?:ing|e)?\\s*(?:based\\s*on|using|from)\\s*(?:personality|character|trait|behavio[u]?r(?:al)?\\s*pattern|demographic|social\\s*media)"
+  score: 8
+  category: "criminal_profiling"
+  articleRef: "AI Act Annex III 6(d); Art. 5(1)(d) — Criminal profiling based on personality traits is high-risk/potentially prohibited"
+
+- pattern: "\\bcrime\\s*(?:analytics?|pattern|data\\s*mining|intelligence)\\s*(?:system|AI|tool|platform)|\\b(?:large|big)\\s*(?:data(?:set)?|scale)\\s*(?:crime\\s*)?(?:analysis|analytics|pattern\\s*(?:detection|recognition|search))"
+  score: 7
+  category: "crime_analytics"
+  articleRef: "AI Act Annex III 6(e) — Crime analytics in large datasets is high-risk, requires transparency"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:bail|detention|remand|pre[- ]?trial)\\s*(?:decision|recommendation|assessment|risk\\s*score)|\\b(?:bail|detention|remand)\\s*(?:decision|risk)\\s*(?:by|via|using)\\s*(?:AI|algorithm)"
+  score: 8
+  category: "automated_bail"
+  articleRef: "AI Act Annex III 6(a); EU Charter Art. 6 — AI bail/detention decisions require human judicial review"
+
+- pattern: "\\b(?:facial|biometric)\\s*(?:recognition|identification)\\s*(?:in|at|for)\\s*(?:law\\s*enforcement|police|criminal|investigation)\\s*(?:without|no)\\s*(?:authori[sz]ation|warrant|judicial|legal\\s*basis)"
+  score: 8
+  category: "unauthorised_biometric_le"
+  articleRef: "AI Act Art. 5(1)(h); LED 2016/680 — Biometric identification in law enforcement requires specific authorization"
+
+- pattern: "\\bno\\s*(?:transparency|disclosure|notification|information)\\s*(?:about|regarding|of)\\s*(?:AI|algorithm|automated)\\s*(?:use|involvement|system)\\s*(?:in|during)\\s*(?:criminal|investigation|prosecution|law\\s*enforcement|policing)"
+  score: 8
+  category: "no_transparency_le"
+  articleRef: "AI Act Art. 86; LED Art. 13-14; ECHR Art. 6 — Persons subject to AI in criminal proceedings must be informed"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:alert|flag|notification|warning)\\s*(?:system|mechanism)\\s*(?:without|no)\\s*(?:human\\s*(?:review|verification|check|confirmation)|oversight)"
+  score: 7
+  category: "automated_alerts"
+  articleRef: "AI Act Art. 14; Annex III 6(a) — Automated law enforcement alerts require human review before action"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:risk\\s*(?:assess|scor|evaluat)|danger(?:ousness)?\\s*(?:assess|evaluat|scor))(?:ment|ing|ed)?\\s*(?:of|for)\\s*(?:victim|witness|offender|suspect|person)"
+  score: 7
+  category: "individual_risk_assessment"
+  articleRef: "AI Act Annex III 6(a) — Individual risk assessment by AI in law enforcement is high-risk"

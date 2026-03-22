@@ -1,0 +1,51 @@
+{
+  "name": "aulite",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "EU AI Act compliance proxy for AI systems — real-time monitoring, audit trail, and reporting",
+  "main": "dist/index.js",
+  "bin": {
+    "aulite": "dist/cli.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsup src/index.ts src/cli.ts --format esm --dts && node scripts/copy-rules.mjs && cd dashboard && npm run build",
+    "build:dashboard": "cd dashboard && npm run build",
+    "start": "node dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "ai",
+    "compliance",
+    "audit",
+    "proxy",
+    "eu-ai-act",
+    "llm"
+  ],
+  "author": "Aulite Technologies",
+  "license": "BUSL-1.1",
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.11",
+    "better-sqlite3": "^12.8.0",
+    "dotenv": "^17.3.1",
+    "hono": "^4.12.8",
+    "pdfkit": "^0.18.0",
+    "uuid": "^13.0.0",
+    "yaml": "^2.8.2"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.5.0",
+    "@types/pdfkit": "^0.17.5",
+    "@types/uuid": "^10.0.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  }
+}

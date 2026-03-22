@@ -1,0 +1,74 @@
+# Aulite Biometrics Rules — AI Act Annex III Point 1
+# Remote biometric identification and biometric categorisation systems
+#
+# Sources: AI Act Art. 5(1)(d)(g)(h), Annex III 1(a)(b),
+#          GDPR Art. 9, Law Enforcement Directive 2016/680,
+#          EU Charter Art. 7 (private life), Art. 8 (data protection)
+
+# ============================================================
+# PROHIBITED / CRITICAL (Score: 9-10)
+# ============================================================
+
+- pattern: "\\breal[- ]?time\\s*(?:remote\\s*)?biometric\\s*identif|\\blive\\s*(?:facial|biometric)\\s*(?:recognition|identification|scanning)\\s*(?:in|at|of)\\s*(?:public|street|station|airport|crowd)"
+  score: 10
+  category: "prohibited_realtime_rbi"
+  articleRef: "AI Act Art. 5(1)(h) — Real-time remote biometric identification in public spaces is PROHIBITED (narrow law enforcement exceptions)"
+
+- pattern: "\\bmass\\s*(?:biometric\\s*)?surveillance|\\bblanket\\s*(?:facial|biometric)\\s*(?:recognition|scanning|monitoring)|\\bindiscriminate\\s*(?:facial|biometric)|\\bcity[- ]?wide\\s*(?:facial|camera)\\s*(?:recognition|surveillance)"
+  score: 10
+  category: "prohibited_mass_surveillance"
+  articleRef: "AI Act Art. 5(1)(h); EU Charter Art. 7 — Mass biometric surveillance is PROHIBITED"
+
+- pattern: "\\bcovert(?:ly)?\\s*(?:collect|capture|record|scan)\\s*(?:biometric|facial|fingerprint|iris|voice)|\\bsecret(?:ly)?\\s*(?:biometric|facial)\\s*(?:collection|capture|scanning)|\\bwithout\\s*(?:knowledge|consent|awareness).*(?:biometric|facial)"
+  score: 9
+  category: "covert_biometric_collection"
+  articleRef: "AI Act Art. 5(1)(h); GDPR Art. 5(1)(a) — Covert biometric data collection violates lawfulness and transparency"
+
+- pattern: "\\b(?:build|create|compile|populate)\\s*(?:a\\s*)?(?:facial|biometric)\\s*(?:recognition\\s*)?database|\\bfaceprint\\s*(?:database|repository)|\\bharvest(?:ing)?\\s*(?:biometric|facial)\\s*(?:data|template)"
+  score: 9
+  category: "biometric_database_creation"
+  articleRef: "AI Act Art. 5(1)(e); GDPR Art. 9 — Untargeted creation of facial recognition databases is PROHIBITED"
+
+- pattern: "\\bbiometric\\s*(?:profil|categori[sz]).*(?:race|ethnic|religion|political|orientation|gender|sex\\s*life|philosophical|trade\\s*union)|\\binfer\\s*(?:race|ethnic|religion|political|orientation|sex\\s*life)\\s*from\\s*(?:biometric|facial|voice|gait)"
+  score: 10
+  category: "prohibited_biometric_categorisation"
+  articleRef: "AI Act Art. 5(1)(g) — Biometric categorisation inferring protected characteristics is PROHIBITED"
+
+# ============================================================
+# HIGH (Score: 7-8) — Annex III Point 1
+# ============================================================
+
+- pattern: "\\bpost[- ]?(?:remote\\s*)?biometric\\s*identif|\\bafter[- ]?the[- ]?fact\\s*(?:biometric|facial)\\s*(?:identification|recognition)|\\bretroactive\\s*(?:biometric|facial)\\s*(?:identification|recognition|search)"
+  score: 8
+  category: "post_remote_rbi"
+  articleRef: "AI Act Annex III 1(a) — Post remote biometric identification is high-risk, requires strict safeguards"
+
+- pattern: "\\bemotion\\s*(?:recognition|detection)\\s*(?:deploy|system|service|product|platform|solution)|\\bdeploy(?:ing)?\\s*emotion\\s*(?:recognition|detection)|\\bemotion\\s*AI\\s*(?:without|no)\\s*(?:noti|inform|disclos)"
+  score: 8
+  category: "emotion_recognition_deployment"
+  articleRef: "AI Act Art. 50(3) — Deployers of emotion recognition must inform affected persons"
+
+- pattern: "\\bbiometric\\s*(?:data|template)\\s*(?:shar|transfer|exchange|send|export)|\\bshare\\s*(?:biometric|facial)\\s*(?:data|template)|\\bcross[- ]?border\\s*(?:biometric|facial)\\s*(?:data|transfer)"
+  score: 8
+  category: "biometric_data_sharing"
+  articleRef: "GDPR Art. 9, Art. 44-49 — Biometric data transfer requires explicit consent and adequate safeguards"
+
+- pattern: "\\bretain(?:ing)?\\s*biometric\\s*(?:data|template)\\s*(?:indefinite|permanent|forever|without\\s*(?:limit|expir))|\\bstore\\s*(?:biometric|facial)\\s*(?:data|template)\\s*(?:indefinite|permanent)"
+  score: 7
+  category: "biometric_retention"
+  articleRef: "GDPR Art. 5(1)(e) — Biometric data retention must be limited to what is necessary"
+
+- pattern: "\\bliveness\\s*(?:detection\\s*)?(?:bypass|spoof|circumvent|defeat)|\\bdeepfake\\s*(?:bypass|attack)\\s*(?:biometric|facial)|\\bpresentation\\s*attack|\\banti[- ]?spoofing\\s*(?:failure|bypass)"
+  score: 7
+  category: "biometric_spoofing"
+  articleRef: "AI Act Art. 15 — Biometric systems must be robust against presentation attacks"
+
+- pattern: "\\bvoice(?:print)?\\s*(?:identification|recognition|profil|match)|\\bspeaker\\s*(?:identification|recognition|verification)\\s*(?:without|covert|secret)"
+  score: 7
+  category: "voice_biometric"
+  articleRef: "AI Act Annex III 1(a); GDPR Art. 9 — Voice biometric identification is high-risk"
+
+- pattern: "\\bgait\\s*(?:recognition|analysis|identification)|\\bwalking\\s*pattern\\s*(?:recognition|identification|analysis)|\\bbehavio[u]?ral\\s*biometric\\s*(?:tracking|monitoring|identification)"
+  score: 7
+  category: "behavioural_biometric"
+  articleRef: "AI Act Annex III 1(a); GDPR Art. 9 — Behavioural biometric identification is high-risk"

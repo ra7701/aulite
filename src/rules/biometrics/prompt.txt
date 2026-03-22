@@ -1,0 +1,32 @@
+DOMAIN-SPECIFIC ANALYSIS: Biometrics (AI Act Annex III Point 1)
+
+Additionally analyze for these biometrics-specific risks:
+
+1. REAL-TIME REMOTE BIOMETRIC IDENTIFICATION (AI Act Art. 5(1)(h)):
+   - Use in publicly accessible spaces is PROHIBITED except for narrow law enforcement exceptions
+   - Exceptions require prior judicial authorization and are limited to: searching for victims, preventing imminent threats, locating suspects of specific serious crimes
+   - Any deployment outside these exceptions is an absolute ban violation
+
+2. POST REMOTE BIOMETRIC IDENTIFICATION (Annex III 1(a)):
+   - High-risk system requiring conformity assessment
+   - Must have human oversight before any action is taken based on identification
+   - Requires data protection impact assessment (GDPR Art. 35)
+
+3. BIOMETRIC CATEGORISATION (Annex III 1(b), Art. 5(1)(g)):
+   - Categorisation inferring race, political opinions, trade union membership, religious/philosophical beliefs, sex life, or sexual orientation is PROHIBITED
+   - Other biometric categorisation systems are high-risk
+
+4. EMOTION RECOGNITION DEPLOYMENT (Art. 50(3)):
+   - Deployers must inform natural persons that they are exposed to emotion recognition
+   - Workplace and educational emotion recognition is prohibited under Art. 5(1)(f)
+
+5. BIOMETRIC DATA GOVERNANCE (GDPR Art. 9):
+   - Biometric data for identification is special category data
+   - Requires explicit consent or specific legal basis
+   - Data minimisation and storage limitation apply strictly
+   - Cross-border transfers require adequate safeguards
+
+6. SYSTEM ROBUSTNESS (AI Act Art. 15):
+   - Biometric systems must be resilient to presentation attacks (spoofing)
+   - Must address adversarial vulnerabilities
+   - Accuracy requirements are particularly strict for biometric systems

@@ -1,0 +1,83 @@
+# Aulite Migration Rules — AI Act Annex III Point 7
+# AI in migration, asylum, and border control management
+#
+# Sources: AI Act Annex III 7(a)-(d), Art. 5,
+#          Asylum Procedures Dir. 2013/32/EU,
+#          Reception Conditions Dir. 2013/33/EU,
+#          Qualification Dir. 2011/95/EU,
+#          Schengen Borders Code (EU) 2016/399,
+#          EU Charter Art. 18 (right to asylum), Art. 19 (non-refoulement),
+#          Geneva Convention 1951
+
+# ============================================================
+# CRITICAL (Score: 9-10) — Severe rights violations
+# ============================================================
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:deny|reject|refuse|decline)\\s*(?:asylum|refugee|protection|international\\s*protection)\\s*(?:application|claim|request|status)|\\basylum\\s*(?:application|claim|request)\\s*(?:denied|rejected|refused)\\s*(?:by|via|through)\\s*(?:AI|algorithm|automated)"
+  score: 10
+  category: "automated_asylum_denial"
+  articleRef: "AI Act Annex III 7(d); EU Charter Art. 18; Geneva Convention Art. 33 — Automated asylum denial violates right to asylum and non-refoulement"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:deport|remov|expel|return|repatriate)(?:ation|ing|ed)?\\s*(?:decision|order|recommendation)\\s*(?:without|no)\\s*(?:human|judicial|individual\\s*assess|appeal|review)"
+  score: 10
+  category: "automated_deportation"
+  articleRef: "EU Charter Art. 19; ECHR Art. 3 — Automated deportation decisions violate prohibition of collective expulsion and non-refoulement"
+
+- pattern: "(?:\\bnationality|\\bethnic(?:ity)?|\\bcountry\\s*of\\s*origin|\\brace|\\breligion|\\bskin\\s*colo[u]?r)\\s*(?:based|driven|factor)\\s*(?:in|for)\\s*(?:risk\\s*(?:assess|profil|scor)|screening|selection|prioriti[sz]|border\\s*(?:check|control))"
+  score: 9
+  category: "ethnic_border_profiling"
+  articleRef: "AI Act Annex III 7(b); EU Charter Art. 21; Dir. 2000/43/EC — Ethnic/nationality-based profiling at borders is discriminatory"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:detain|deten|intern|confine)(?:tion|ing|ed)?\\s*(?:decision|recommendation|order)\\s*(?:for|of)\\s*(?:migrant|asylum|refugee|irregular)|\\b(?:migrant|asylum|refugee)\\s*(?:detention|internment)\\s*(?:by|via|through)\\s*(?:AI|algorithm|automated)"
+  score: 9
+  category: "automated_detention_migration"
+  articleRef: "Reception Conditions Dir. Art. 8-11; EU Charter Art. 6 — Automated detention decisions require individual assessment and judicial review"
+
+# ============================================================
+# HIGH (Score: 7-8) — High-risk migration AI uses
+# ============================================================
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:polygraph|lie\\s*detect|deception\\s*detect|truth\\s*verif|credibility\\s*assess)(?:ion|or|ing|ed)?\\s*(?:in|for|during)\\s*(?:asylum|migration|border|immigration|visa|interview)"
+  score: 8
+  category: "ai_polygraph_migration"
+  articleRef: "AI Act Annex III 7(a) — AI polygraphs/lie detectors in migration context are high-risk"
+
+- pattern: "\\b(?:AI|automat|algorithm)(?:ic|ically|ed)?\\s*(?:risk\\s*(?:assess|scor|evaluat)|security\\s*(?:assess|screen|profil)|threat\\s*(?:assess|level))(?:ment|ing|ed)?\\s*(?:of|for)\\s*(?:migrant|asylum|refugee|traveller|border\\s*cross|arrival|immigrant)"
+  score: 8
+  category: "migration_risk_assessment"
+  articleRef: "AI Act Annex III 7(b) — AI risk assessment in migration is high-risk, must not be sole basis for decisions"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:deny|reject|refuse|decline)\\s*(?:visa|residence\\s*permit|entry|travel\\s*(?:document|authoris))\\s*(?:without|no)\\s*(?:explanation|reason|justification|appeal|human\\s*review)"
+  score: 8
+  category: "automated_visa_denial"
+  articleRef: "AI Act Annex III 7(d); Art. 86 — Automated visa/entry denial without explanation violates right to explanation"
+
+- pattern: "\\b(?:vulnerab|minor|unaccompanied|child|victim\\s*of\\s*trafficking|torture\\s*survivor|pregnant|disabl)\\s*(?:assess|identif|screen|detect)(?:ion|ing|ed)?\\s*(?:by|via|using)\\s*(?:AI|algorithm|automated)\\s*(?:without|no)\\s*(?:human|specialist|professional|safeguard)"
+  score: 8
+  category: "vulnerability_assessment"
+  articleRef: "Reception Conditions Dir. Art. 21-22; EU Charter Art. 24 — Vulnerability assessment requires professional involvement, not AI alone"
+
+- pattern: "\\blanguage\\s*(?:analysis|detection|identification|recognition)\\s*(?:for|to)\\s*(?:determin|verif|assess|establish)\\s*(?:nationality|country|origin|identity)|\\bdialect\\s*(?:analysis|recognition)\\s*(?:for|to)\\s*(?:nationality|origin)"
+  score: 7
+  category: "language_analysis_nationality"
+  articleRef: "AI Act Annex III 7(b); UNHCR guidelines — Language analysis for nationality determination is high-risk and unreliable"
+
+- pattern: "\\b(?:social\\s*media|online\\s*(?:presence|activit|profil))\\s*(?:surveillance|monitoring|screening|analys)(?:is|ing|ed)?\\s*(?:of|for)\\s*(?:asylum|migrant|refugee|applicant|visa\\s*applicant|immigrant)"
+  score: 7
+  category: "social_media_migration"
+  articleRef: "GDPR Art. 5(1)(c); EU Charter Art. 7 — Social media surveillance of migration applicants raises proportionality concerns"
+
+- pattern: "\\b(?:document|passport|identity\\s*(?:card|document)|travel\\s*document)\\s*(?:fraud\\s*)?(?:detect|verif|authenticat|valid|check|examin)(?:ion|ing|ed)?\\s*(?:by|via|using)\\s*(?:AI|algorithm|automated)\\s*(?:without|no)\\s*(?:human\\s*(?:review|verification|check)|manual\\s*(?:check|verification))"
+  score: 7
+  category: "automated_document_check"
+  articleRef: "AI Act Annex III 7(c) — AI document verification is high-risk, requires human verification before consequential decisions"
+
+- pattern: "\\b(?:automat|AI|algorithm)(?:ically|ed)?\\s*(?:process|examin|assess|evaluat|analys|review)(?:ing|ed)?\\s*(?:asylum|visa|residence|immigration)\\s*(?:application|claim|case|request|dossier)\\s*(?:without|no)\\s*(?:human|individual\\s*(?:assessment|review|consider)|case[- ]?by[- ]?case)"
+  score: 8
+  category: "automated_application_processing"
+  articleRef: "AI Act Annex III 7(d); Asylum Procedures Dir. Art. 10 — Each application requires individual examination by qualified personnel"
+
+- pattern: "\\bhealth\\s*(?:screen|check|assess|test)(?:ing|ed)?\\s*(?:for|to)\\s*(?:exclud|deny|restrict|refuse|bar|prevent)\\s*(?:entry|admission|access|asylum|visa|residence)|\\bmedical\\s*(?:ground|reason|basis)\\s*(?:for|to)\\s*(?:refus|deny|exclud|reject)"
+  score: 8
+  category: "health_exclusion_migration"
+  articleRef: "EU Charter Art. 35; Dir. 2000/43/EC — Health screening for exclusion purposes is discriminatory (except public health threats under IHR)"

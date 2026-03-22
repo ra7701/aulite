@@ -1,0 +1,215 @@
+# Aulite HR/Employment Rules — AI Act Annex III Point 4
+# Domain-specific rules for HR, recruitment, and employment
+#
+# Sources: Dir. 2000/78/EC, Dir. 2000/43/EC, Dir. 2006/54/EC,
+#          EU Charter Art. 21, AI Act Annex III 4(b),
+#          Platform Work Directive 2024/2831
+
+# ============================================================
+# CRITICAL: Automated decisions without human oversight (Score: 9)
+# Employment-specific — AI Act Art. 14, GDPR Art. 22
+# ============================================================
+
+- pattern: "automatically\\s*reject|auto[- ]?reject|auto[- ]?approve|automatically\\s*shortlist|make\\s*the\\s*(?:final\\s*)?decision|decide\\s*which\\s*candidates|rank\\s*and\\s*eliminate|filter\\s*out\\s*candidates|I\\s*have\\s*decided\\s*to\\s*reject|candidate\\s*(?:is\\s*)?rejected|application\\s*denied|candidate\\s*eliminated|immediate\\s*termination"
+  score: 9
+  category: "human_oversight"
+  articleRef: "AI Act Art. 14(4)(d); GDPR Art. 22(1) — Final decisions require human oversight"
+
+# ============================================================
+# HIGH: Direct discrimination keywords (Score: 7-8)
+# EU Charter Art. 21, Directives 2000/78, 2000/43, 2006/54
+# ============================================================
+
+# --- Age — Direct (Dir. 2000/78/EC) ---
+- pattern: "\\btoo\\s*old\\b|\\btoo\\s*young\\b|\\baged\\s*\\d|\\bretirement\\s*plan|how\\s*much\\s*longer.*work|comfortable.*younger\\s*manager|oldest\\s*person\\s*in|\\bage\\s*\\d+\\s*or\\s*(?:under|over)|how\\s*old\\s*are\\s*you"
+  score: 8
+  category: "discrimination_age"
+  articleRef: "Dir. 2000/78/EC; EU Charter Art. 21 — Age discrimination"
+
+# --- Gender/Sex/Pregnancy — Direct (Dir. 2006/54/EC) ---
+- pattern: "\\bfemale\\s*candidate|\\bmale\\s*candidate|looking\\s*for\\s*a\\s*(?:wo)?man|maternity\\s*risk|plans?\\s*to\\s*have\\s*children|family\\s*planning|might\\s*become\\s*pregnant|\\bpregnant\\b|\\bpregnancy\\b"
+  score: 8
+  category: "discrimination_gender"
+  articleRef: "Dir. 2006/54/EC; EU Charter Art. 21 — Gender/pregnancy discrimination"
+
+- pattern: "\\bmarital\\s*status|\\bmarried\\b|\\bsingle\\b|\\bdivorced\\b|\\bmaiden\\s*name|\\bworking\\s*mother|\\bbreadwinner|\\bfamily\\s*plans|\\bchildcare\\s*responsibilities"
+  score: 7
+  category: "discrimination_gender"
+  articleRef: "Dir. 2006/54/EC; CJEU case law — Marital/family status discrimination derived from sex"
+
+# --- Race/Ethnicity/National Origin — Direct (Dir. 2000/43/EC) ---
+- pattern: "\\bnative\\s*(?:english\\s*)?speaker|foreign[- ]?sounding\\s*name|\\bforeigner\\b|\\bimmigrant\\b|\\bexotic\\b|country\\s*of\\s*origin|\\bnon[- ]?native\\b|\\bnationality\\b"
+  score: 8
+  category: "discrimination_race"
+  articleRef: "Dir. 2000/43/EC; EU Charter Art. 21 — Racial/ethnic/national origin discrimination"
+
+- pattern: "\\bskin\\b.*\\b(?:colo[u]?r|tone)|\\bcomplexion\\b|\\btribal\\b|\\bindigenous\\b|\\bethnic(?:ity)?\\b|\\bracial\\b"
+  score: 8
+  category: "discrimination_race"
+  articleRef: "Dir. 2000/43/EC; EU Charter Art. 21 — Racial/ethnic discrimination"
+
+# --- Disability — Direct (Dir. 2000/78/EC) ---
+- pattern: "\\bmust\\s*be\\s*able[- ]?bodied|\\bno\\s*disabilit|\\bhandicap(?:ped)?\\b|sick\\s*leave\\s*history|\\bhealth\\s*condition|\\bchronic\\s*illness|\\bmental\\s*health\\s*(?:issue|problem|history)"
+  score: 8
+  category: "discrimination_disability"
+  articleRef: "Dir. 2000/78/EC; EU Charter Art. 21 — Disability discrimination"
+
+- pattern: "\\bwheelchair\\b|\\bspecial\\s*needs\\b|\\bblind\\b|\\bdeaf\\b|\\bimpair(?:ed|ment)\\b|\\bpsychiatric\\b"
+  score: 7
+  category: "discrimination_disability"
+  articleRef: "Dir. 2000/78/EC; EU Charter Art. 21 — Disability discrimination"
+
+# --- Religion/Belief — Direct (Dir. 2000/78/EC) ---
+- pattern: "\\bchristian\\s*values|\\bmust\\s*be\\s*(?:christian|muslim|jewish|hindu|sikh|buddhist)|\\bno\\s*head\\s*coverings?|\\bno\\s*headscarf|\\bno\\s*hijab|\\bno\\s*turban|\\bno\\s*facial\\s*hair"
+  score: 8
+  category: "discrimination_religion"
+  articleRef: "Dir. 2000/78/EC; EU Charter Art. 21 — Religious discrimination"
+
+# --- Social Origin/Property/Birth (EU Charter Art. 21) ---
+- pattern: "\\bsocial\\s*class|\\bsocial\\s*background|\\bworking\\s*class|\\bupper\\s*class|\\bpedigree\\b|\\bnoble\\b|\\billegitimate\\b|\\bbirthplace\\b"
+  score: 7
+  category: "discrimination_social_origin"
+  articleRef: "EU Charter Art. 21 — Social origin/birth discrimination"
+
+# --- "Any other opinion" beyond political (EU Charter Art. 21) ---
+- pattern: "\\benvironmental\\s*activis[mt]|\\banimal\\s*rights\\s*activis[mt]|\\bclimate\\s*activis[mt]|\\bpersonal\\s*(?:views?|opinions?)\\s*on|\\bideological\\b"
+  score: 6
+  category: "discrimination_opinion"
+  articleRef: "EU Charter Art. 21 — 'Political or any other opinion' includes non-political convictions"
+
+# --- Language discrimination (EU Charter Art. 21) ---
+- pattern: "\\blanguage\\s*(?:barrier|deficien|problem)|\\bpoor\\s*(?:english|language)|\\bbroken\\s*(?:english|language)|\\bnon[- ]?english\\s*speak|\\bspeak\\s*(?:only|no)\\s*english"
+  score: 6
+  category: "discrimination_language"
+  articleRef: "EU Charter Art. 21 — Language discrimination (when not genuine occupational requirement)"
+
+# --- National minority membership (EU Charter Art. 21) ---
+- pattern: "\\bnational\\s*minority|\\bminority\\s*group|\\bRoma\\b|\\bSinti\\b|\\btraveller\\s*community"
+  score: 8
+  category: "discrimination_national_minority"
+  articleRef: "EU Charter Art. 21 — National minority membership"
+
+# ============================================================
+# MEDIUM: Indirect/proxy discrimination (Score: 3-6)
+# Neutral criteria that disproportionately disadvantage groups
+# ============================================================
+
+# --- Age Proxies ---
+- pattern: "\\bdigital\\s*native|\\brecent\\s*graduate|\\byoung\\s*and\\s*dynamic|\\bfresh\\s*(?:perspective|ideas)|\\bgo[- ]getter|\\bwork\\s*hard.*play\\s*hard|\\bhigh[- ]energy|\\bfast[- ]paced\\s*startup|\\btech[- ]savvy|\\bhigh[- ]potential|\\bcurrent\\s*college\\s*student"
+  score: 5
+  category: "proxy_age"
+  articleRef: "Dir. 2000/78/EC — Indirect age discrimination (proxy language)"
+
+- pattern: "\\boverqualified\\b"
+  score: 6
+  category: "proxy_age"
+  articleRef: "Dir. 2000/78/EC — 'Overqualified' frequently used as age proxy"
+
+- pattern: "\\bmaximum\\s*\\d+\\s*years?\\s*experience|\\b\\d+[- ]\\d+\\s*years?\\s*(?:experience|exp)\\s*(?:only|max)"
+  score: 5
+  category: "proxy_age"
+  articleRef: "Dir. 2000/78/EC — Experience caps function as age ceiling"
+
+# --- Gender-Coded Language (Gaucher et al. 2011) ---
+- pattern: "\\bninja\\b|\\brockstar\\b|\\bguru\\b|\\bdominant\\b|\\bdominate\\b|\\bfearless\\b|\\bheadstrong\\b|\\baggressive\\b"
+  score: 4
+  category: "proxy_gender"
+  articleRef: "Dir. 2006/54/EC — Masculine-coded language deters women applicants (Gaucher et al. 2011)"
+
+- pattern: "\\bcompetitive\\b|\\bautonomous\\b|\\bambitious\\b|\\bdecisive\\b|\\bhierarchical\\b|\\bsuperior\\b|\\bassertive\\b"
+  score: 3
+  category: "proxy_gender"
+  articleRef: "Dir. 2006/54/EC — Masculine-coded stems (Gaucher et al. 2011, Gender Decoder)"
+
+- pattern: "\\bchairman\\b|\\bsalesman\\b|\\bfireman\\b|\\bpoliceman\\b|\\bstewardess\\b|\\bmanpower\\b|\\bworkmanship\\b"
+  score: 4
+  category: "proxy_gender"
+  articleRef: "Dir. 2006/54/EC — Gendered job titles deter applicants of other gender"
+
+# --- Race/Ethnicity Proxies ---
+- pattern: "\\bculture\\s*fit|\\bcultural\\s*fit|\\bwouldn't\\s*fit\\s*in|\\bnot\\s*(?:a\\s*)?good\\s*fit|\\bfit\\s*(?:in\\s*)?with\\s*the\\s*team"
+  score: 6
+  category: "proxy_race"
+  articleRef: "Dir. 2000/43/EC — 'Culture fit' functions as proxy for ethnicity/race discrimination"
+
+- pattern: "\\bprofessional\\s*appearance|\\bprofessional\\s*hairstyle|\\bgrooming\\s*standards"
+  score: 5
+  category: "proxy_race"
+  articleRef: "Dir. 2000/43/EC — 'Professional appearance' can penalize ethnic hairstyles/dress"
+
+- pattern: "\\bzip\\s*code|\\bpostcode|\\bneighbo[u]?rhood\\b|\\bfirst\\s*language|\\bmother\\s*tongue|\\baccent\\b"
+  score: 5
+  category: "proxy_race"
+  articleRef: "Dir. 2000/43/EC — Geographic/linguistic factors as proxies for ethnicity"
+
+# --- Disability Proxies ---
+- pattern: "\\bgaps?\\s*in\\s*employment|\\battendance\\s*record|\\bsick\\s*days?\\s*(?:history|record)|\\bstamina\\b|\\bphysical\\s*fitness"
+  score: 5
+  category: "proxy_disability"
+  articleRef: "Dir. 2000/78/EC — Employment gaps/attendance correlate with disability"
+
+- pattern: "\\bmust\\s*(?:be\\s*able\\s*to\\s*)?(?:stand|lift|climb|carry)\\s*(?:for\\s*)?\\d|\\bmust\\s*have\\s*(?:valid\\s*)?driver'?s?\\s*licen[cs]e"
+  score: 5
+  category: "proxy_disability"
+  articleRef: "Dir. 2000/78/EC — Physical requirements may exclude disabled persons unless essential function"
+
+# --- Religion Proxies ---
+- pattern: "\\bbeer\\s*friday|\\bhappy\\s*hour\\s*(?:team|culture)|\\bmust\\s*be\\s*available\\s*all\\s*holidays|\\bweekend\\s*(?:golf|social)\\s*(?:outing|event|activit)"
+  score: 5
+  category: "proxy_religion"
+  articleRef: "Dir. 2000/78/EC — Social activity requirements can exclude religious groups"
+
+# --- Socioeconomic Proxies ---
+- pattern: "\\bivy\\s*league|\\btop[- ]tier\\s*university|\\bprestigious\\s*institution|\\bunpaid\\s*internship|\\bmust\\s*have\\s*own\\s*transport"
+  score: 4
+  category: "proxy_class"
+  articleRef: "EU Charter Art. 21 — Socioeconomic class proxy"
+
+- pattern: "\\bcredit\\s*score|\\bcredit\\s*check|\\bfinancial\\s*(?:background|history|status)|\\bproperty\\s*owner|\\bhomeowner"
+  score: 5
+  category: "proxy_class"
+  articleRef: "EU Charter Art. 21 — Financial status as socioeconomic proxy"
+
+# ============================================================
+# MEDIUM: Transparency violations (Score: 5-6)
+# EU AI Act Art. 13, GDPR Recital 71
+# ============================================================
+
+- pattern: "\\bjust\\s*doesn't\\s*feel|\\bgut\\s*feeling|\\binstinct\\s*says|\\bnot\\s*what\\s*we're\\s*looking\\s*for|\\bdoesn't\\s*have\\s*the\\s*right\\s*vibe|\\bpersonality\\s*mismatch"
+  score: 6
+  category: "transparency"
+  articleRef: "AI Act Art. 13; GDPR Recital 71 — Decisions must have articulable, non-discriminatory reasoning"
+
+# Automation bias indicators
+- pattern: "\\byou\\s*must\\s*reject|\\byou\\s*should\\s*definitely|\\bthis\\s*candidate\\s*is\\s*(?:un)?suitable|\\bperfect\\s*match|\\bscore:\\s*100|\\bI\\s*(?:strongly\\s*)?recommend\\s*(?:immediate\\s*)?(?:reject|terminat)"
+  score: 6
+  category: "automation_bias"
+  articleRef: "AI Act Art. 14(4)(b) — Outputs should include uncertainty, not absolute judgments"
+
+# ============================================================
+# Employment lifecycle — AI Act Annex III Point 4(b)
+# ============================================================
+
+# --- Promotion/termination decisions by AI ---
+- pattern: "\\bpromotion\\s*decision|\\bpromote\\s*or\\s*(?:demote|terminate)|\\btermination\\s*recommendation|\\brecommend\\s*(?:promotion|termination|dismissal)|\\bperformance\\s*(?:improvement|probation)\\s*plan"
+  score: 8
+  category: "human_oversight_employment"
+  articleRef: "AI Act Annex III 4(b); Art. 14 — Promotion/termination decisions require human oversight"
+
+# --- Task allocation based on personal traits ---
+- pattern: "\\ballocate\\s*tasks?\\s*based\\s*on|\\bassign\\s*(?:work|tasks?)\\s*based\\s*on\\s*(?:personality|traits?|characteristics?|behavio[u]?r)"
+  score: 7
+  category: "annex_iii_task_allocation"
+  articleRef: "AI Act Annex III 4(b) — Task allocation based on personal traits/behaviour is high-risk"
+
+# --- Performance/behaviour monitoring ---
+- pattern: "\\bmonitor\\s*(?:employee|worker|staff)\\s*(?:performance|behavio[u]?r)|\\bperformance\\s*surveillance|\\bproductivity\\s*(?:tracking|monitoring|score)|\\bworkplace\\s*surveillance|\\bkeystroke\\s*log|\\bscreen\\s*(?:capture|recording|monitor)"
+  score: 7
+  category: "annex_iii_monitoring"
+  articleRef: "AI Act Annex III 4(b) — AI monitoring/evaluating worker performance is high-risk"
+
+# --- Platform Work Directive (2024/2831) ---
+- pattern: "\\bemotion(?:al)?\\s*(?:state|monitor|detect|track)\\s*(?:of\\s*)?(?:worker|employee|driver|rider)|\\bpsychological\\s*(?:state|profil)|\\balgorithmic\\s*management"
+  score: 9
+  category: "platform_work_directive"
+  articleRef: "Platform Work Directive 2024/2831 — Prohibits processing emotional/psychological state data"

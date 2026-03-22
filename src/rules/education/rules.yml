@@ -1,0 +1,80 @@
+# Aulite Education Rules — AI Act Annex III Point 3
+# AI in education and vocational training
+#
+# Sources: AI Act Annex III 3(a)(b)(c)(d), Art. 14, Art. 13,
+#          EU Charter Art. 14 (right to education), Art. 24 (children's rights),
+#          Dir. 2000/43/EC, Dir. 2000/78/EC (anti-discrimination in education),
+#          GDPR Art. 8 (children's consent), UNCRC
+
+# ============================================================
+# CRITICAL (Score: 9) — Automated decisions on access to education
+# ============================================================
+
+- pattern: "\\b(?:automat|AI)(?:ically|ed)?\\s*(?:deny|reject|refuse|exclude)(?:ed|ing|s)?\\s*(?:the\\s*)?(?:student'?s?\\s*)?(?:admission|access|enrol|entry|application)|\\bstudent\\s*(?:rejected|denied|excluded)\\s*(?:by|based\\s*on)\\s*(?:AI|algorithm|system|score)|\\badmission\\s*(?:application\\s*)?(?:denied|rejected|refused)\\s*(?:by|via|through)\\s*(?:AI|algorithm|automat)"
+  score: 9
+  category: "automated_admission"
+  articleRef: "AI Act Annex III 3(a); Art. 14 — AI determining access to education requires human oversight"
+
+- pattern: "\\b(?:automat|AI)(?:ically|ed)?\\s*(?:expel|suspend|remove)\\s*(?:student|pupil|learner)|\\bAI\\s*(?:recommend|decision)\\s*(?:to\\s*)?(?:expel|suspend|exclude)\\s*(?:student|pupil|learner)"
+  score: 9
+  category: "automated_expulsion"
+  articleRef: "AI Act Annex III 3(a); EU Charter Art. 14 — Expulsion/exclusion from education requires human decision-making"
+
+# ============================================================
+# HIGH (Score: 7-8) — Assessment, monitoring, profiling
+# ============================================================
+
+- pattern: "\\b(?:AI|automat)(?:ed)?\\s*(?:grading|marking|scoring|assessment)\\s*(?:as\\s*)?(?:final|definitive|binding|non[- ]?appealable)|\\bfinal\\s*(?:grade|mark|score)\\s*(?:determin|set|assign)(?:ed)?\\s*(?:by|via|through)\\s*(?:AI|algorithm|system)"
+  score: 8
+  category: "automated_grading"
+  articleRef: "AI Act Annex III 3(b); GDPR Art. 22 — Automated assessment as final decision requires human review and right to contest"
+
+- pattern: "\\bproctor(?:ing)?\\s*(?:with|using|via)\\s*(?:biometric|facial|eye[- ]?track|webcam|camera)|\\bexam\\s*(?:surveillance|monitoring)\\s*(?:with|using)\\s*(?:biometric|facial|webcam)|\\beye[- ]?tracking\\s*(?:during|for)\\s*(?:exam|test|assessment)"
+  score: 8
+  category: "biometric_proctoring"
+  articleRef: "AI Act Annex III 3(d); Art. 5(1)(f) — AI proctoring with biometric monitoring raises proportionality and prohibited practice concerns"
+
+- pattern: "\\bstudent\\s*(?:profil|categoris|classif)(?:ing|e|ation)\\s*(?:by|based\\s*on)\\s*(?:race|ethnic|religion|disabilit|gender|sex|socio|income|background|origin)|\\bsort(?:ing)?\\s*(?:student|pupil|learner)s?\\s*(?:by|based\\s*on)\\s*(?:protected|personal|demographic)"
+  score: 8
+  category: "student_profiling_protected"
+  articleRef: "Dir. 2000/43/EC; Dir. 2000/78/EC; EU Charter Art. 21 — Student profiling based on protected characteristics"
+
+- pattern: "\\b(?:predict|identif|flag)(?:ing|s)?\\s*(?:student|pupil|learner)s?\\s*(?:likely\\s*to\\s*)?(?:drop\\s*out|fail|underperform)\\s*(?:and\\s*)?(?:exclud|remov|restrict|deny|limit)\\s*(?:access|opportunit|resource)"
+  score: 8
+  category: "predictive_exclusion"
+  articleRef: "AI Act Annex III 3(c); EU Charter Art. 14 — Predictive models must not be used to exclude students from educational opportunities"
+
+- pattern: "\\bchild(?:ren)?(?:'s)?\\s*(?:data|information|profile)\\s*(?:process|collect|store|share|sell)(?:ed|ing)?\\s*(?:without|no)\\s*(?:parental\\s*)?(?:consent|permission|authoris)|\\bunder\\s*(?:13|16|age)\\s*(?:data|consent|processing)\\s*(?:without|no)\\s*(?:parental|guardian)"
+  score: 8
+  category: "childrens_data"
+  articleRef: "GDPR Art. 8; UNCRC Art. 16 — Children's data requires parental consent and enhanced protection"
+
+- pattern: "\\b(?:automat|AI)(?:ically|ed)?\\s*(?:assign|place|stream|track)\\s*(?:student|pupil|learner)s?\\s*(?:to|into|in)\\s*(?:class|group|stream|track|level|tier)|\\bability\\s*(?:grouping|streaming|tracking)\\s*(?:by|via|using)\\s*(?:AI|algorithm)"
+  score: 7
+  category: "automated_streaming"
+  articleRef: "AI Act Annex III 3(c); Dir. 2000/43/EC — AI-driven ability grouping/streaming risks perpetuating inequality"
+
+- pattern: "\\bemotion\\s*(?:recognition|detection|monitor)\\s*(?:in|during|of)\\s*(?:class|school|lesson|lecture|education|learning)|\\bstudent\\s*(?:emotion|mood|affect|attention|engagement)\\s*(?:detection|monitoring|tracking|recognition)"
+  score: 8
+  category: "emotion_detection_education"
+  articleRef: "AI Act Art. 5(1)(f) — Emotion recognition in educational institutions is PROHIBITED"
+
+- pattern: "\\bstudent\\s*(?:behavio[u]?r|activit)\\s*(?:surveillance|monitoring|tracking)\\s*(?:system|AI|software)|\\bmonitor(?:ing)?\\s*(?:student|pupil|learner)\\s*(?:online|digital|screen|device|browsing)\\s*(?:activit|behavio[u]?r)"
+  score: 7
+  category: "student_surveillance"
+  articleRef: "AI Act Annex III 3(d); GDPR Art. 5(1)(c) — Student behavioural surveillance must be proportionate"
+
+- pattern: "\\blearning\\s*(?:path|plan|curriculum)\\s*(?:determin|set|assign|generat)(?:ed)?\\s*(?:by|via|through)\\s*(?:AI|algorithm|system)\\s*(?:without|no)\\s*(?:transparenc|explanation|justification|informing)"
+  score: 7
+  category: "opaque_adaptive_learning"
+  articleRef: "AI Act Annex III 3(b); Art. 13 — AI-driven learning paths must be transparent to students and educators"
+
+- pattern: "\\b(?:special\\s*(?:education|needs)|disabilit|SEN|learning\\s*(?:difficult|disabilit))\\s*(?:classif|categoris|diagnos|assess|determin)(?:ied|ation|ed)?\\s*(?:by|via|using)\\s*(?:AI|algorithm|system)\\s*(?:without|no)\\s*(?:human|specialist|expert|professional)"
+  score: 7
+  category: "automated_special_needs"
+  articleRef: "AI Act Annex III 3(c); Dir. 2000/78/EC — Special educational needs classification requires specialist assessment"
+
+- pattern: "\\b(?:socio[- ]?economic|income|poverty|family\\s*(?:income|wealth|background))\\s*(?:factor|data|variable)\\s*(?:in|for)\\s*(?:admission|access|selection|assessment)\\s*(?:to|of)\\s*(?:education|school|university)"
+  score: 7
+  category: "socioeconomic_education"
+  articleRef: "EU Charter Art. 14, Art. 21 — Socioeconomic factors must not determine access to education"
