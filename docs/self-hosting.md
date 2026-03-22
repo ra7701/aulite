@@ -13,7 +13,7 @@ docker run -d \
   -e AULITE_API_KEYS=your-secret-key \
   -v aulite-data:/app/data \
   --restart unless-stopped \
-  aulite/aulite
+  el1ght/aulite
 ```
 
 ## Docker Compose
@@ -21,7 +21,7 @@ docker run -d \
 ```yaml
 services:
   aulite:
-    image: aulite/aulite
+    image: el1ght/aulite
     ports:
       - "3000:3000"
     environment:

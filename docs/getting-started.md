@@ -9,7 +9,7 @@ docker run -d \
   -p 3000:3000 \
   -e ANTHROPIC_API_KEY=sk-ant-... \
   -v aulite-data:/app/data \
-  aulite/aulite
+  el1ght/aulite
 ```
 
 ## Quick Start (npm)

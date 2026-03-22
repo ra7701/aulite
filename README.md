@@ -54,7 +54,7 @@ Aulite helps you:
 docker run -d \
   -p 3000:3000 \
   -e ANTHROPIC_API_KEY=sk-ant-... \
-  aulite/aulite
+  el1ght/aulite
 ```
 
 Open `http://localhost:3000` for the dashboard.
@@ -157,7 +157,7 @@ See [Configuration docs](docs/configuration.md) for all options.
 # docker-compose.yml
 services:
   aulite:
-    image: aulite/aulite
+    image: el1ght/aulite
     ports:
       - "3000:3000"
     environment:
@@ -208,7 +208,7 @@ See [Architecture docs](docs/architecture.md) for the full request flow and tech
 ## Development
 
 ```bash
-git clone https://github.com/aulite/aulite.git
+git clone https://github.com/el1ght/aulite.git
 cd aulite
 npm install
 cd dashboard && npm install && cd ..
