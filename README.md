@@ -1,12 +1,6 @@
 <div align="center">
 
-<img src="dashboard/public/aulite.svg" alt="Aulite" width="80" height="80" />
-
-# Aulite
-
-**EU AI Act compliance proxy for AI systems**
-
-Real-time monitoring · Tamper-proof audit trail · Legal-grade reports
+<img src="docs/banner.jpg" alt="Aulite — EU AI Act Compliance Proxy" width="100%" />
 
 [![License](https://img.shields.io/badge/License-BUSL--1.1-blue.svg)](LICENSE.md)
 [![Tests](https://img.shields.io/badge/tests-108%20passing-brightgreen.svg)]()
