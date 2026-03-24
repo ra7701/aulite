@@ -4,8 +4,19 @@
 
 [![License](https://img.shields.io/badge/License-BUSL--1.1-blue.svg)](LICENSE.md)
 [![Tests](https://img.shields.io/badge/tests-108%20passing-brightgreen.svg)]()
+[![Docker Pulls](https://img.shields.io/docker/pulls/el1ght/aulite.svg?logo=docker&logoColor=white)](https://hub.docker.com/r/el1ght/aulite)
+[![Docker Size](https://img.shields.io/docker/image-size/el1ght/aulite/latest?logo=docker&logoColor=white&label=image)](https://hub.docker.com/r/el1ght/aulite)
 [![Node](https://img.shields.io/badge/node-%3E%3D22-339933.svg?logo=node.js&logoColor=white)]()
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6.svg?logo=typescript&logoColor=white)]()
+[![GitHub Stars](https://img.shields.io/github/stars/el1ght/aulite?style=flat&logo=github)](https://github.com/el1ght/aulite/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/el1ght/aulite?logo=github)](https://github.com/el1ght/aulite/issues)
+[![GitHub Last Commit](https://img.shields.io/github/last-commit/el1ght/aulite?logo=github)](https://github.com/el1ght/aulite/commits/main)
+[![EU AI Act](https://img.shields.io/badge/EU%20AI%20Act-Annex%20III-orange.svg)]()
+[![Compliance Rules](https://img.shields.io/badge/compliance%20rules-143-blueviolet.svg)]()
+[![Risk Domains](https://img.shields.io/badge/risk%20domains-8-teal.svg)]()
+[![Overhead](https://img.shields.io/badge/overhead-%3C5ms-green.svg)]()
+[![Self Hosted](https://img.shields.io/badge/self--hosted-yes-blue.svg)]()
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/el1ght/aulite/pulls)
 
 [Documentation](docs/) · [Quick Start](#quick-start) · [Configuration](docs/configuration.md) · [API Reference](docs/api-reference.md)
 
